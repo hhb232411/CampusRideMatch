@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}{{ _('Home') }} - Campus Ride Match{% endblock %}
+{% block content %}
+<section class="hero">
+  <p class="eyebrow">{{ _('Campus travel made easier') }}</p>
+  <h1>{{ _('Share campus journeys, simply.') }}</h1>
+  <p>{{ _('Publish a plan, find a compatible time range, and coordinate after the publisher accepts.') }}</p>
+  <div class="actions hero-actions"><a class="button" href="{{ url_for('trips.search') }}">{{ _('Find a trip') }}</a>{% if g.user %}<a class="button secondary" href="{{ url_for('trips.publish') }}">{{ _('Publish a trip') }}</a>{% else %}<a class="button secondary" href="{{ url_for('auth.register') }}">{{ _('Create an account') }}</a>{% endif %}</div>
+</section>
+<p class="notice">{{ _('Notification explanation') }}</p>
+<section class="stats card-grid">
+  <article class="card"><strong>{{ statistics['trip_count'] }}</strong><span>{{ _('Trips') }}</span></article>
+  <article class="card"><strong>{{ statistics['completed_count'] }}</strong><span>{{ _('Completed') }}</span></article>
+  <article class="card"><strong>{{ statistics['user_count'] }}</strong><span>{{ _('Members') }}</span></article>
+</section>
+{% endblock %}

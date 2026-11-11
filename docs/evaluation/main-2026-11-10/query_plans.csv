@@ -1,0 +1,400 @@
+size,condition,query,case,id,parent,detail
+100,full,trip_search,q1,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,full,trip_search,q1,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,full,trip_search,q1,20,0,SEARCH t USING INDEX idx_trips_search (trip_date=? AND origin_area_id=? AND destination_area_id=? AND status=? AND start_time<?)
+100,full,trip_search,q1,47,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,full,trip_search,q1,50,0,SEARCH tp USING COVERING INDEX idx_participants_trip_status (trip_id=? AND status=?) LEFT-JOIN
+100,full,trip_search,q1,57,0,USE TEMP B-TREE FOR GROUP BY
+100,full,trip_search,q1,142,0,USE TEMP B-TREE FOR ORDER BY
+100,reduced,trip_search,q1,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,trip_search,q1,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,trip_search,q1,20,0,SCAN t
+100,reduced,trip_search,q1,44,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,trip_search,q1,47,0,SEARCH tp USING INDEX uq_participants_active (trip_id=?) LEFT-JOIN
+100,reduced,trip_search,q1,117,0,USE TEMP B-TREE FOR ORDER BY
+100,full,trip_search,q2,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,full,trip_search,q2,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,full,trip_search,q2,20,0,SEARCH t USING INDEX idx_trips_search (trip_date=? AND origin_area_id=? AND destination_area_id=? AND status=? AND start_time<?)
+100,full,trip_search,q2,47,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,full,trip_search,q2,50,0,SEARCH tp USING COVERING INDEX idx_participants_trip_status (trip_id=? AND status=?) LEFT-JOIN
+100,full,trip_search,q2,57,0,USE TEMP B-TREE FOR GROUP BY
+100,full,trip_search,q2,142,0,USE TEMP B-TREE FOR ORDER BY
+100,reduced,trip_search,q2,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,trip_search,q2,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,trip_search,q2,20,0,SCAN t
+100,reduced,trip_search,q2,44,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,trip_search,q2,47,0,SEARCH tp USING INDEX uq_participants_active (trip_id=?) LEFT-JOIN
+100,reduced,trip_search,q2,117,0,USE TEMP B-TREE FOR ORDER BY
+100,full,trip_search,q3,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,full,trip_search,q3,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,full,trip_search,q3,20,0,SEARCH t USING INDEX idx_trips_search (trip_date=? AND origin_area_id=? AND destination_area_id=? AND status=? AND start_time<?)
+100,full,trip_search,q3,47,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,full,trip_search,q3,50,0,SEARCH tp USING COVERING INDEX idx_participants_trip_status (trip_id=? AND status=?) LEFT-JOIN
+100,full,trip_search,q3,57,0,USE TEMP B-TREE FOR GROUP BY
+100,full,trip_search,q3,142,0,USE TEMP B-TREE FOR ORDER BY
+100,reduced,trip_search,q3,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,trip_search,q3,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,trip_search,q3,20,0,SCAN t
+100,reduced,trip_search,q3,44,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,trip_search,q3,47,0,SEARCH tp USING INDEX uq_participants_active (trip_id=?) LEFT-JOIN
+100,reduced,trip_search,q3,117,0,USE TEMP B-TREE FOR ORDER BY
+100,full,browse_open,all,11,0,SCAN t
+100,full,browse_open,all,23,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,full,browse_open,all,26,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,full,browse_open,all,29,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,full,browse_open,all,32,0,SEARCH tp USING COVERING INDEX idx_participants_trip_status (trip_id=? AND status=?) LEFT-JOIN
+100,full,browse_open,all,98,0,USE TEMP B-TREE FOR ORDER BY
+100,reduced,browse_open,all,12,0,SCAN t
+100,reduced,browse_open,all,24,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,browse_open,all,27,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,browse_open,all,30,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,browse_open,all,33,0,SEARCH tp USING INDEX uq_participants_active (trip_id=?) LEFT-JOIN
+100,reduced,browse_open,all,103,0,USE TEMP B-TREE FOR ORDER BY
+100,full,my_joined_trips,q1,8,0,SEARCH tp USING INDEX idx_participants_user_status (user_id=?)
+100,full,my_joined_trips,q1,15,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+100,full,my_joined_trips,q1,18,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,full,my_joined_trips,q1,21,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,full,my_joined_trips,q1,24,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,full,my_joined_trips,q1,49,0,USE TEMP B-TREE FOR ORDER BY
+100,reduced,my_joined_trips,q1,7,0,SCAN tp
+100,reduced,my_joined_trips,q1,11,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,my_joined_trips,q1,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,my_joined_trips,q1,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,my_joined_trips,q1,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,my_joined_trips,q1,45,0,USE TEMP B-TREE FOR ORDER BY
+100,full,my_joined_trips,q2,8,0,SEARCH tp USING INDEX idx_participants_user_status (user_id=?)
+100,full,my_joined_trips,q2,15,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+100,full,my_joined_trips,q2,18,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,full,my_joined_trips,q2,21,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,full,my_joined_trips,q2,24,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,full,my_joined_trips,q2,49,0,USE TEMP B-TREE FOR ORDER BY
+100,reduced,my_joined_trips,q2,7,0,SCAN tp
+100,reduced,my_joined_trips,q2,11,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,my_joined_trips,q2,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,my_joined_trips,q2,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,my_joined_trips,q2,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,my_joined_trips,q2,45,0,USE TEMP B-TREE FOR ORDER BY
+100,full,my_joined_trips,q3,8,0,SEARCH tp USING INDEX idx_participants_user_status (user_id=?)
+100,full,my_joined_trips,q3,15,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+100,full,my_joined_trips,q3,18,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,full,my_joined_trips,q3,21,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,full,my_joined_trips,q3,24,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,full,my_joined_trips,q3,49,0,USE TEMP B-TREE FOR ORDER BY
+100,reduced,my_joined_trips,q3,7,0,SCAN tp
+100,reduced,my_joined_trips,q3,11,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,my_joined_trips,q3,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,my_joined_trips,q3,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,my_joined_trips,q3,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,my_joined_trips,q3,45,0,USE TEMP B-TREE FOR ORDER BY
+100,full,incoming_requests,q1,9,0,SEARCH t USING INDEX idx_trips_publisher (publisher_id=?)
+100,full,incoming_requests,q1,16,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,full,incoming_requests,q1,19,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,full,incoming_requests,q1,22,0,SEARCH mr USING INDEX idx_requests_trip_status (trip_id=?)
+100,full,incoming_requests,q1,27,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,full,incoming_requests,q1,51,0,USE TEMP B-TREE FOR ORDER BY
+100,reduced,incoming_requests,q1,7,0,SCAN mr
+100,reduced,incoming_requests,q1,9,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,incoming_requests,q1,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,incoming_requests,q1,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,incoming_requests,q1,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,incoming_requests,q1,43,0,USE TEMP B-TREE FOR ORDER BY
+100,full,incoming_requests,q2,9,0,SEARCH t USING INDEX idx_trips_publisher (publisher_id=?)
+100,full,incoming_requests,q2,16,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,full,incoming_requests,q2,19,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,full,incoming_requests,q2,22,0,SEARCH mr USING INDEX idx_requests_trip_status (trip_id=?)
+100,full,incoming_requests,q2,27,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,full,incoming_requests,q2,51,0,USE TEMP B-TREE FOR ORDER BY
+100,reduced,incoming_requests,q2,7,0,SCAN mr
+100,reduced,incoming_requests,q2,9,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,incoming_requests,q2,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,incoming_requests,q2,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,incoming_requests,q2,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,incoming_requests,q2,43,0,USE TEMP B-TREE FOR ORDER BY
+100,full,incoming_requests,q3,9,0,SEARCH t USING INDEX idx_trips_publisher (publisher_id=?)
+100,full,incoming_requests,q3,16,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,full,incoming_requests,q3,19,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,full,incoming_requests,q3,22,0,SEARCH mr USING INDEX idx_requests_trip_status (trip_id=?)
+100,full,incoming_requests,q3,27,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,full,incoming_requests,q3,51,0,USE TEMP B-TREE FOR ORDER BY
+100,reduced,incoming_requests,q3,7,0,SCAN mr
+100,reduced,incoming_requests,q3,9,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,incoming_requests,q3,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,incoming_requests,q3,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,incoming_requests,q3,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,incoming_requests,q3,43,0,USE TEMP B-TREE FOR ORDER BY
+100,full,popular_routes,all,10,0,SCAN t USING COVERING INDEX idx_trips_search
+100,full,popular_routes,all,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,full,popular_routes,all,15,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,full,popular_routes,all,18,0,USE TEMP B-TREE FOR GROUP BY
+100,full,popular_routes,all,65,0,USE TEMP B-TREE FOR ORDER BY
+100,reduced,popular_routes,all,10,0,SCAN t
+100,reduced,popular_routes,all,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,popular_routes,all,15,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+100,reduced,popular_routes,all,18,0,USE TEMP B-TREE FOR GROUP BY
+100,reduced,popular_routes,all,65,0,USE TEMP B-TREE FOR ORDER BY
+1000,full,trip_search,q1,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,trip_search,q1,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,trip_search,q1,20,0,SEARCH t USING INDEX idx_trips_search (trip_date=? AND origin_area_id=? AND destination_area_id=? AND status=? AND start_time<?)
+1000,full,trip_search,q1,47,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,trip_search,q1,50,0,SEARCH tp USING COVERING INDEX idx_participants_trip_status (trip_id=? AND status=?) LEFT-JOIN
+1000,full,trip_search,q1,57,0,USE TEMP B-TREE FOR GROUP BY
+1000,full,trip_search,q1,142,0,USE TEMP B-TREE FOR ORDER BY
+1000,reduced,trip_search,q1,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,trip_search,q1,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,trip_search,q1,20,0,SCAN t
+1000,reduced,trip_search,q1,44,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,trip_search,q1,47,0,SEARCH tp USING INDEX uq_participants_active (trip_id=?) LEFT-JOIN
+1000,reduced,trip_search,q1,117,0,USE TEMP B-TREE FOR ORDER BY
+1000,full,trip_search,q2,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,trip_search,q2,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,trip_search,q2,20,0,SEARCH t USING INDEX idx_trips_search (trip_date=? AND origin_area_id=? AND destination_area_id=? AND status=? AND start_time<?)
+1000,full,trip_search,q2,47,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,trip_search,q2,50,0,SEARCH tp USING COVERING INDEX idx_participants_trip_status (trip_id=? AND status=?) LEFT-JOIN
+1000,full,trip_search,q2,57,0,USE TEMP B-TREE FOR GROUP BY
+1000,full,trip_search,q2,142,0,USE TEMP B-TREE FOR ORDER BY
+1000,reduced,trip_search,q2,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,trip_search,q2,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,trip_search,q2,20,0,SCAN t
+1000,reduced,trip_search,q2,44,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,trip_search,q2,47,0,SEARCH tp USING INDEX uq_participants_active (trip_id=?) LEFT-JOIN
+1000,reduced,trip_search,q2,117,0,USE TEMP B-TREE FOR ORDER BY
+1000,full,trip_search,q3,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,trip_search,q3,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,trip_search,q3,20,0,SEARCH t USING INDEX idx_trips_search (trip_date=? AND origin_area_id=? AND destination_area_id=? AND status=? AND start_time<?)
+1000,full,trip_search,q3,47,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,trip_search,q3,50,0,SEARCH tp USING COVERING INDEX idx_participants_trip_status (trip_id=? AND status=?) LEFT-JOIN
+1000,full,trip_search,q3,57,0,USE TEMP B-TREE FOR GROUP BY
+1000,full,trip_search,q3,142,0,USE TEMP B-TREE FOR ORDER BY
+1000,reduced,trip_search,q3,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,trip_search,q3,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,trip_search,q3,20,0,SCAN t
+1000,reduced,trip_search,q3,44,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,trip_search,q3,47,0,SEARCH tp USING INDEX uq_participants_active (trip_id=?) LEFT-JOIN
+1000,reduced,trip_search,q3,117,0,USE TEMP B-TREE FOR ORDER BY
+1000,full,browse_open,all,11,0,SCAN t
+1000,full,browse_open,all,23,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,browse_open,all,26,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,browse_open,all,29,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,browse_open,all,32,0,SEARCH tp USING COVERING INDEX idx_participants_trip_status (trip_id=? AND status=?) LEFT-JOIN
+1000,full,browse_open,all,98,0,USE TEMP B-TREE FOR ORDER BY
+1000,reduced,browse_open,all,12,0,SCAN t
+1000,reduced,browse_open,all,24,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,browse_open,all,27,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,browse_open,all,30,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,browse_open,all,33,0,SEARCH tp USING INDEX uq_participants_active (trip_id=?) LEFT-JOIN
+1000,reduced,browse_open,all,103,0,USE TEMP B-TREE FOR ORDER BY
+1000,full,my_joined_trips,q1,8,0,SEARCH tp USING INDEX idx_participants_user_status (user_id=?)
+1000,full,my_joined_trips,q1,15,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,my_joined_trips,q1,18,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,my_joined_trips,q1,21,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,my_joined_trips,q1,24,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,my_joined_trips,q1,49,0,USE TEMP B-TREE FOR ORDER BY
+1000,reduced,my_joined_trips,q1,7,0,SCAN tp
+1000,reduced,my_joined_trips,q1,11,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,my_joined_trips,q1,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,my_joined_trips,q1,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,my_joined_trips,q1,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,my_joined_trips,q1,45,0,USE TEMP B-TREE FOR ORDER BY
+1000,full,my_joined_trips,q2,8,0,SEARCH tp USING INDEX idx_participants_user_status (user_id=?)
+1000,full,my_joined_trips,q2,15,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,my_joined_trips,q2,18,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,my_joined_trips,q2,21,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,my_joined_trips,q2,24,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,my_joined_trips,q2,49,0,USE TEMP B-TREE FOR ORDER BY
+1000,reduced,my_joined_trips,q2,7,0,SCAN tp
+1000,reduced,my_joined_trips,q2,11,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,my_joined_trips,q2,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,my_joined_trips,q2,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,my_joined_trips,q2,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,my_joined_trips,q2,45,0,USE TEMP B-TREE FOR ORDER BY
+1000,full,my_joined_trips,q3,8,0,SEARCH tp USING INDEX idx_participants_user_status (user_id=?)
+1000,full,my_joined_trips,q3,15,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,my_joined_trips,q3,18,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,my_joined_trips,q3,21,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,my_joined_trips,q3,24,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,my_joined_trips,q3,49,0,USE TEMP B-TREE FOR ORDER BY
+1000,reduced,my_joined_trips,q3,7,0,SCAN tp
+1000,reduced,my_joined_trips,q3,11,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,my_joined_trips,q3,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,my_joined_trips,q3,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,my_joined_trips,q3,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,my_joined_trips,q3,45,0,USE TEMP B-TREE FOR ORDER BY
+1000,full,incoming_requests,q1,9,0,SEARCH t USING INDEX idx_trips_publisher (publisher_id=?)
+1000,full,incoming_requests,q1,16,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,incoming_requests,q1,19,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,incoming_requests,q1,22,0,SEARCH mr USING INDEX idx_requests_trip_status (trip_id=?)
+1000,full,incoming_requests,q1,27,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,incoming_requests,q1,51,0,USE TEMP B-TREE FOR ORDER BY
+1000,reduced,incoming_requests,q1,7,0,SCAN mr
+1000,reduced,incoming_requests,q1,9,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,incoming_requests,q1,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,incoming_requests,q1,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,incoming_requests,q1,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,incoming_requests,q1,43,0,USE TEMP B-TREE FOR ORDER BY
+1000,full,incoming_requests,q2,9,0,SEARCH t USING INDEX idx_trips_publisher (publisher_id=?)
+1000,full,incoming_requests,q2,16,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,incoming_requests,q2,19,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,incoming_requests,q2,22,0,SEARCH mr USING INDEX idx_requests_trip_status (trip_id=?)
+1000,full,incoming_requests,q2,27,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,incoming_requests,q2,51,0,USE TEMP B-TREE FOR ORDER BY
+1000,reduced,incoming_requests,q2,7,0,SCAN mr
+1000,reduced,incoming_requests,q2,9,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,incoming_requests,q2,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,incoming_requests,q2,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,incoming_requests,q2,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,incoming_requests,q2,43,0,USE TEMP B-TREE FOR ORDER BY
+1000,full,incoming_requests,q3,9,0,SEARCH t USING INDEX idx_trips_publisher (publisher_id=?)
+1000,full,incoming_requests,q3,16,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,incoming_requests,q3,19,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,incoming_requests,q3,22,0,SEARCH mr USING INDEX idx_requests_trip_status (trip_id=?)
+1000,full,incoming_requests,q3,27,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,incoming_requests,q3,51,0,USE TEMP B-TREE FOR ORDER BY
+1000,reduced,incoming_requests,q3,7,0,SCAN mr
+1000,reduced,incoming_requests,q3,9,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,incoming_requests,q3,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,incoming_requests,q3,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,incoming_requests,q3,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,incoming_requests,q3,43,0,USE TEMP B-TREE FOR ORDER BY
+1000,full,popular_routes,all,10,0,SCAN t USING COVERING INDEX idx_trips_search
+1000,full,popular_routes,all,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,popular_routes,all,15,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,full,popular_routes,all,18,0,USE TEMP B-TREE FOR GROUP BY
+1000,full,popular_routes,all,65,0,USE TEMP B-TREE FOR ORDER BY
+1000,reduced,popular_routes,all,10,0,SCAN t
+1000,reduced,popular_routes,all,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,popular_routes,all,15,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+1000,reduced,popular_routes,all,18,0,USE TEMP B-TREE FOR GROUP BY
+1000,reduced,popular_routes,all,65,0,USE TEMP B-TREE FOR ORDER BY
+5000,full,trip_search,q1,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,trip_search,q1,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,trip_search,q1,20,0,SEARCH t USING INDEX idx_trips_search (trip_date=? AND origin_area_id=? AND destination_area_id=? AND status=? AND start_time<?)
+5000,full,trip_search,q1,47,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,trip_search,q1,50,0,SEARCH tp USING COVERING INDEX idx_participants_trip_status (trip_id=? AND status=?) LEFT-JOIN
+5000,full,trip_search,q1,57,0,USE TEMP B-TREE FOR GROUP BY
+5000,full,trip_search,q1,142,0,USE TEMP B-TREE FOR ORDER BY
+5000,reduced,trip_search,q1,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,trip_search,q1,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,trip_search,q1,20,0,SCAN t
+5000,reduced,trip_search,q1,44,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,trip_search,q1,47,0,SEARCH tp USING INDEX uq_participants_active (trip_id=?) LEFT-JOIN
+5000,reduced,trip_search,q1,117,0,USE TEMP B-TREE FOR ORDER BY
+5000,full,trip_search,q2,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,trip_search,q2,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,trip_search,q2,20,0,SEARCH t USING INDEX idx_trips_search (trip_date=? AND origin_area_id=? AND destination_area_id=? AND status=? AND start_time<?)
+5000,full,trip_search,q2,47,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,trip_search,q2,50,0,SEARCH tp USING COVERING INDEX idx_participants_trip_status (trip_id=? AND status=?) LEFT-JOIN
+5000,full,trip_search,q2,57,0,USE TEMP B-TREE FOR GROUP BY
+5000,full,trip_search,q2,142,0,USE TEMP B-TREE FOR ORDER BY
+5000,reduced,trip_search,q2,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,trip_search,q2,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,trip_search,q2,20,0,SCAN t
+5000,reduced,trip_search,q2,44,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,trip_search,q2,47,0,SEARCH tp USING INDEX uq_participants_active (trip_id=?) LEFT-JOIN
+5000,reduced,trip_search,q2,117,0,USE TEMP B-TREE FOR ORDER BY
+5000,full,trip_search,q3,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,trip_search,q3,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,trip_search,q3,20,0,SEARCH t USING INDEX idx_trips_search (trip_date=? AND origin_area_id=? AND destination_area_id=? AND status=? AND start_time<?)
+5000,full,trip_search,q3,47,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,trip_search,q3,50,0,SEARCH tp USING COVERING INDEX idx_participants_trip_status (trip_id=? AND status=?) LEFT-JOIN
+5000,full,trip_search,q3,57,0,USE TEMP B-TREE FOR GROUP BY
+5000,full,trip_search,q3,142,0,USE TEMP B-TREE FOR ORDER BY
+5000,reduced,trip_search,q3,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,trip_search,q3,16,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,trip_search,q3,20,0,SCAN t
+5000,reduced,trip_search,q3,44,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,trip_search,q3,47,0,SEARCH tp USING INDEX uq_participants_active (trip_id=?) LEFT-JOIN
+5000,reduced,trip_search,q3,117,0,USE TEMP B-TREE FOR ORDER BY
+5000,full,browse_open,all,11,0,SCAN t
+5000,full,browse_open,all,23,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,browse_open,all,26,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,browse_open,all,29,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,browse_open,all,32,0,SEARCH tp USING COVERING INDEX idx_participants_trip_status (trip_id=? AND status=?) LEFT-JOIN
+5000,full,browse_open,all,98,0,USE TEMP B-TREE FOR ORDER BY
+5000,reduced,browse_open,all,12,0,SCAN t
+5000,reduced,browse_open,all,24,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,browse_open,all,27,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,browse_open,all,30,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,browse_open,all,33,0,SEARCH tp USING INDEX uq_participants_active (trip_id=?) LEFT-JOIN
+5000,reduced,browse_open,all,103,0,USE TEMP B-TREE FOR ORDER BY
+5000,full,my_joined_trips,q1,8,0,SEARCH tp USING INDEX idx_participants_user_status (user_id=?)
+5000,full,my_joined_trips,q1,15,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,my_joined_trips,q1,18,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,my_joined_trips,q1,21,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,my_joined_trips,q1,24,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,my_joined_trips,q1,49,0,USE TEMP B-TREE FOR ORDER BY
+5000,reduced,my_joined_trips,q1,7,0,SCAN tp
+5000,reduced,my_joined_trips,q1,11,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,my_joined_trips,q1,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,my_joined_trips,q1,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,my_joined_trips,q1,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,my_joined_trips,q1,45,0,USE TEMP B-TREE FOR ORDER BY
+5000,full,my_joined_trips,q2,8,0,SEARCH tp USING INDEX idx_participants_user_status (user_id=?)
+5000,full,my_joined_trips,q2,15,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,my_joined_trips,q2,18,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,my_joined_trips,q2,21,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,my_joined_trips,q2,24,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,my_joined_trips,q2,49,0,USE TEMP B-TREE FOR ORDER BY
+5000,reduced,my_joined_trips,q2,7,0,SCAN tp
+5000,reduced,my_joined_trips,q2,11,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,my_joined_trips,q2,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,my_joined_trips,q2,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,my_joined_trips,q2,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,my_joined_trips,q2,45,0,USE TEMP B-TREE FOR ORDER BY
+5000,full,my_joined_trips,q3,8,0,SEARCH tp USING INDEX idx_participants_user_status (user_id=?)
+5000,full,my_joined_trips,q3,15,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,my_joined_trips,q3,18,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,my_joined_trips,q3,21,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,my_joined_trips,q3,24,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,my_joined_trips,q3,49,0,USE TEMP B-TREE FOR ORDER BY
+5000,reduced,my_joined_trips,q3,7,0,SCAN tp
+5000,reduced,my_joined_trips,q3,11,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,my_joined_trips,q3,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,my_joined_trips,q3,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,my_joined_trips,q3,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,my_joined_trips,q3,45,0,USE TEMP B-TREE FOR ORDER BY
+5000,full,incoming_requests,q1,9,0,SEARCH t USING INDEX idx_trips_publisher (publisher_id=?)
+5000,full,incoming_requests,q1,16,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,incoming_requests,q1,19,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,incoming_requests,q1,22,0,SEARCH mr USING INDEX idx_requests_trip_status (trip_id=?)
+5000,full,incoming_requests,q1,27,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,incoming_requests,q1,51,0,USE TEMP B-TREE FOR ORDER BY
+5000,reduced,incoming_requests,q1,7,0,SCAN mr
+5000,reduced,incoming_requests,q1,9,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,incoming_requests,q1,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,incoming_requests,q1,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,incoming_requests,q1,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,incoming_requests,q1,43,0,USE TEMP B-TREE FOR ORDER BY
+5000,full,incoming_requests,q2,9,0,SEARCH t USING INDEX idx_trips_publisher (publisher_id=?)
+5000,full,incoming_requests,q2,16,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,incoming_requests,q2,19,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,incoming_requests,q2,22,0,SEARCH mr USING INDEX idx_requests_trip_status (trip_id=?)
+5000,full,incoming_requests,q2,27,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,incoming_requests,q2,51,0,USE TEMP B-TREE FOR ORDER BY
+5000,reduced,incoming_requests,q2,7,0,SCAN mr
+5000,reduced,incoming_requests,q2,9,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,incoming_requests,q2,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,incoming_requests,q2,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,incoming_requests,q2,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,incoming_requests,q2,43,0,USE TEMP B-TREE FOR ORDER BY
+5000,full,incoming_requests,q3,9,0,SEARCH t USING INDEX idx_trips_publisher (publisher_id=?)
+5000,full,incoming_requests,q3,16,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,incoming_requests,q3,19,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,incoming_requests,q3,22,0,SEARCH mr USING INDEX idx_requests_trip_status (trip_id=?)
+5000,full,incoming_requests,q3,27,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,incoming_requests,q3,51,0,USE TEMP B-TREE FOR ORDER BY
+5000,reduced,incoming_requests,q3,7,0,SCAN mr
+5000,reduced,incoming_requests,q3,9,0,SEARCH t USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,incoming_requests,q3,14,0,SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,incoming_requests,q3,17,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,incoming_requests,q3,20,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,incoming_requests,q3,43,0,USE TEMP B-TREE FOR ORDER BY
+5000,full,popular_routes,all,10,0,SCAN t USING COVERING INDEX idx_trips_search
+5000,full,popular_routes,all,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,popular_routes,all,15,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,full,popular_routes,all,18,0,USE TEMP B-TREE FOR GROUP BY
+5000,full,popular_routes,all,65,0,USE TEMP B-TREE FOR ORDER BY
+5000,reduced,popular_routes,all,10,0,SCAN t
+5000,reduced,popular_routes,all,12,0,SEARCH oa USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,popular_routes,all,15,0,SEARCH da USING INTEGER PRIMARY KEY (rowid=?)
+5000,reduced,popular_routes,all,18,0,USE TEMP B-TREE FOR GROUP BY
+5000,reduced,popular_routes,all,65,0,USE TEMP B-TREE FOR ORDER BY

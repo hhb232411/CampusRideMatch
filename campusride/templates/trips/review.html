@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}{{ _('Leave a review') }} - Campus Ride Match{% endblock %}
+{% block content %}
+<div class="form-card narrow"><h1>{{ _('Leave a review') }}</h1><p>{{ _('Completed trip') }} #{{ trip['id'] }} · {{ trip['trip_date'] }}</p>
+<form method="post">
+  <label>{{ _('Participant') }}<select name="reviewee_id" required><option value="">{{ _('Choose') }}</option>{% for target in targets %}<option value="{{ target['id'] }}">{{ target['display_name'] }}</option>{% endfor %}</select></label>
+  <label>{{ _('Rating') }}<select name="rating" required>{% for value in range(5, 0, -1) %}<option value="{{ value }}">{{ value }} / 5</option>{% endfor %}</select></label>
+  <label>{{ _('Comment') }}<textarea name="comment" maxlength="1000" rows="5">{{ request.form.get('comment', '') }}</textarea></label>
+  <button>{{ _('Submit review') }}</button>
+</form></div>
+{% endblock %}

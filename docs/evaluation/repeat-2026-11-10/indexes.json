@@ -1,0 +1,518 @@
+[
+  {
+    "size": 100,
+    "condition": "full",
+    "indexes": [
+      {
+        "table": "notifications",
+        "name": "idx_notifications_user_unread",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "idx_participants_trip_status",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "idx_participants_user_status",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "match_requests",
+        "name": "idx_requests_trip_status",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "match_requests",
+        "name": "idx_requests_user_status",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "reviews",
+        "name": "idx_reviews_reviewee",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "trips",
+        "name": "idx_trips_publisher",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "trips",
+        "name": "idx_trips_search",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "location_areas",
+        "name": "sqlite_autoindex_location_areas_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "reviews",
+        "name": "sqlite_autoindex_reviews_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "sqlite_autoindex_trip_participants_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "users",
+        "name": "sqlite_autoindex_users_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "users",
+        "name": "sqlite_autoindex_users_2",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "uq_participants_active",
+        "unique": true,
+        "origin": "c",
+        "partial": true
+      },
+      {
+        "table": "match_requests",
+        "name": "uq_requests_active",
+        "unique": true,
+        "origin": "c",
+        "partial": true
+      }
+    ],
+    "page_size": 4096,
+    "cache_size": -2000,
+    "journal_mode": "delete"
+  },
+  {
+    "size": 100,
+    "condition": "reduced",
+    "indexes": [
+      {
+        "table": "location_areas",
+        "name": "sqlite_autoindex_location_areas_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "reviews",
+        "name": "sqlite_autoindex_reviews_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "sqlite_autoindex_trip_participants_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "users",
+        "name": "sqlite_autoindex_users_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "users",
+        "name": "sqlite_autoindex_users_2",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "uq_participants_active",
+        "unique": true,
+        "origin": "c",
+        "partial": true
+      },
+      {
+        "table": "match_requests",
+        "name": "uq_requests_active",
+        "unique": true,
+        "origin": "c",
+        "partial": true
+      }
+    ],
+    "page_size": 4096,
+    "cache_size": -2000,
+    "journal_mode": "delete"
+  },
+  {
+    "size": 1000,
+    "condition": "full",
+    "indexes": [
+      {
+        "table": "notifications",
+        "name": "idx_notifications_user_unread",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "idx_participants_trip_status",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "idx_participants_user_status",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "match_requests",
+        "name": "idx_requests_trip_status",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "match_requests",
+        "name": "idx_requests_user_status",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "reviews",
+        "name": "idx_reviews_reviewee",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "trips",
+        "name": "idx_trips_publisher",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "trips",
+        "name": "idx_trips_search",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "location_areas",
+        "name": "sqlite_autoindex_location_areas_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "reviews",
+        "name": "sqlite_autoindex_reviews_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "sqlite_autoindex_trip_participants_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "users",
+        "name": "sqlite_autoindex_users_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "users",
+        "name": "sqlite_autoindex_users_2",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "uq_participants_active",
+        "unique": true,
+        "origin": "c",
+        "partial": true
+      },
+      {
+        "table": "match_requests",
+        "name": "uq_requests_active",
+        "unique": true,
+        "origin": "c",
+        "partial": true
+      }
+    ],
+    "page_size": 4096,
+    "cache_size": -2000,
+    "journal_mode": "delete"
+  },
+  {
+    "size": 1000,
+    "condition": "reduced",
+    "indexes": [
+      {
+        "table": "location_areas",
+        "name": "sqlite_autoindex_location_areas_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "reviews",
+        "name": "sqlite_autoindex_reviews_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "sqlite_autoindex_trip_participants_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "users",
+        "name": "sqlite_autoindex_users_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "users",
+        "name": "sqlite_autoindex_users_2",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "uq_participants_active",
+        "unique": true,
+        "origin": "c",
+        "partial": true
+      },
+      {
+        "table": "match_requests",
+        "name": "uq_requests_active",
+        "unique": true,
+        "origin": "c",
+        "partial": true
+      }
+    ],
+    "page_size": 4096,
+    "cache_size": -2000,
+    "journal_mode": "delete"
+  },
+  {
+    "size": 5000,
+    "condition": "full",
+    "indexes": [
+      {
+        "table": "notifications",
+        "name": "idx_notifications_user_unread",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "idx_participants_trip_status",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "idx_participants_user_status",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "match_requests",
+        "name": "idx_requests_trip_status",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "match_requests",
+        "name": "idx_requests_user_status",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "reviews",
+        "name": "idx_reviews_reviewee",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "trips",
+        "name": "idx_trips_publisher",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "trips",
+        "name": "idx_trips_search",
+        "unique": false,
+        "origin": "c",
+        "partial": false
+      },
+      {
+        "table": "location_areas",
+        "name": "sqlite_autoindex_location_areas_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "reviews",
+        "name": "sqlite_autoindex_reviews_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "sqlite_autoindex_trip_participants_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "users",
+        "name": "sqlite_autoindex_users_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "users",
+        "name": "sqlite_autoindex_users_2",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "uq_participants_active",
+        "unique": true,
+        "origin": "c",
+        "partial": true
+      },
+      {
+        "table": "match_requests",
+        "name": "uq_requests_active",
+        "unique": true,
+        "origin": "c",
+        "partial": true
+      }
+    ],
+    "page_size": 4096,
+    "cache_size": -2000,
+    "journal_mode": "delete"
+  },
+  {
+    "size": 5000,
+    "condition": "reduced",
+    "indexes": [
+      {
+        "table": "location_areas",
+        "name": "sqlite_autoindex_location_areas_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "reviews",
+        "name": "sqlite_autoindex_reviews_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "sqlite_autoindex_trip_participants_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "users",
+        "name": "sqlite_autoindex_users_1",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "users",
+        "name": "sqlite_autoindex_users_2",
+        "unique": true,
+        "origin": "u",
+        "partial": false
+      },
+      {
+        "table": "trip_participants",
+        "name": "uq_participants_active",
+        "unique": true,
+        "origin": "c",
+        "partial": true
+      },
+      {
+        "table": "match_requests",
+        "name": "uq_requests_active",
+        "unique": true,
+        "origin": "c",
+        "partial": true
+      }
+    ],
+    "page_size": 4096,
+    "cache_size": -2000,
+    "journal_mode": "delete"
+  }
+]

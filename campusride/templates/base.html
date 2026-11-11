@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="{{ 'zh-HK' if current_language == 'zh' else 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Campus Ride Match{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav">
+      <a class="brand" href="{{ url_for('index') }}">Campus Ride Match</a>
+      <div class="nav-links">
+        <a href="{{ url_for('trips.search') }}">{{ _('Search') }}</a>
+        <a href="{{ url_for('trips.insights') }}">{{ _('Insights') }}</a>
+        {% if g.user %}
+          <a href="{{ url_for('trips.publish') }}">{{ _('Publish') }}</a>
+          <a href="{{ url_for('trips.my_trips') }}">{{ _('My trips') }}</a>
+          <a href="{{ url_for('trips.requests_dashboard') }}">{{ _('Requests') }}</a>
+          <a class="notification-link" href="{{ url_for('notifications.list_notifications') }}">{{ _('Notifications') }}{% if g.unread_notification_count %}<span class="notification-badge" aria-label="{{ g.unread_notification_count }} unread">{{ g.unread_notification_count }}</span>{% endif %}</a>
+          <a href="{{ url_for('auth.profile') }}">{{ g.user['display_name'] }}</a>
+          <form class="inline" action="{{ url_for('auth.logout') }}" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="link-button">{{ _('Log out') }}</button></form>
+        {% else %}
+          <a href="{{ url_for('auth.login') }}">{{ _('Log in') }}</a>
+          <a href="{{ url_for('auth.register') }}">{{ _('Register') }}</a>
+        {% endif %}
+        <form class="language-switcher" action="{{ url_for('set_language', language='zh' if current_language == 'en' else 'en') }}" method="post">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="next" value="{{ request.full_path }}">
+          <button type="submit" aria-label="Switch language">{{ '中文' if current_language == 'en' else 'EN' }}</button>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main class="container">
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+      <div class="flash {{ category }}">{{ _(message) }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </main>
+  <script>document.querySelectorAll('form[method="post"], form[method="POST"]').forEach(form => { if (!form.querySelector('input[name="csrf_token"]')) { const input=document.createElement('input'); input.type='hidden'; input.name='csrf_token'; input.value='{{ csrf_token() }}'; form.prepend(input); } });</script>
+</body>
+</html>

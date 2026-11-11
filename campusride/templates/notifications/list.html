@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}{{ _('Notifications') }} - Campus Ride Match{% endblock %}
+{% block content %}
+<div class="page-heading">
+  <div><h1>{{ _('Notifications') }}</h1><p class="muted">{{ _('Status alerts appear here. This version does not send automatic emails.') }}</p></div>
+  <form method="post" action="{{ url_for('notifications.mark_all_read') }}"><button class="secondary">{{ _('Mark all as read') }}</button></form>
+</div>
+{% if notifications %}<div class="notification-list">
+{% for item in notifications %}
+  <article class="card notification{% if not item['read_at'] %} unread{% endif %}">
+    <div><strong>{{ _(item['event_type']) }}</strong>
+      {% if item['trip_id'] %}<p>{{ item['origin_area'] }} → {{ item['destination_area'] }} · {{ item['trip_date'] }}</p>{% endif %}
+      <small>{{ item['created_at'] }}</small>
+    </div>
+    {% if item['trip_id'] %}
+      {% if item['read_at'] %}<a href="{{ url_for('trips.detail', trip_id=item['trip_id']) }}">{{ _('View trip') }}</a>
+      {% else %}<form method="post" action="{{ url_for('notifications.mark_read', notification_id=item['id']) }}"><button class="small">{{ _('View and mark read') }}</button></form>{% endif %}
+    {% endif %}
+  </article>
+{% endfor %}
+</div>{% else %}<p class="muted">{{ _('No notifications yet.') }}</p>{% endif %}
+{% endblock %}

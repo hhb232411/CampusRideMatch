@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}{{ _('My trips') }} - Campus Ride Match{% endblock %}
+{% block content %}
+<div class="page-heading"><h1>{{ _('My trips') }}</h1><a class="button" href="{{ url_for('trips.publish') }}">{{ _('Publish a trip') }}</a></div>
+<section><h2>{{ _('Published by me') }}</h2>{% with items=published %}{% include 'trips/_trip_table.html' %}{% endwith %}</section>
+<section><h2>{{ _('Trips I joined') }}</h2>
+{% if joined %}<div class="table-wrap"><table><thead><tr><th>{{ _('Date') }}</th><th>{{ _('Route') }}</th><th>{{ _('Publisher') }}</th><th>{{ _('Participation') }}</th><th>{{ _('Trip status') }}</th><th></th></tr></thead><tbody>{% for item in joined %}<tr><td>{{ item['trip_date'] }}</td><td>{{ item['origin_area'] }} → {{ item['destination_area'] }}</td><td>{{ item['publisher_name'] }}</td><td>{{ _(item['participation_status']) }}</td><td>{{ _(item['status']) }}</td><td><a href="{{ url_for('trips.detail', trip_id=item['id']) }}">{{ _('Details') }}</a></td></tr>{% endfor %}</tbody></table></div>{% else %}<p class="muted">{{ _('You have not joined a trip.') }}</p>{% endif %}
+</section>
+<section><h2>{{ _('Request history') }}</h2>
+{% if request_history %}<div class="table-wrap"><table><thead><tr><th>{{ _('Trip') }}</th><th>{{ _('Request status') }}</th><th>{{ _('Participation') }}</th><th></th></tr></thead><tbody>{% for item in request_history %}<tr><td>{{ item['trip_date'] }} · {{ item['origin_area'] }} → {{ item['destination_area'] }}</td><td>{{ _(item['status']) }}</td><td>{{ _(item['participation_status']) if item['participation_status'] else '—' }}</td><td><a href="{{ url_for('trips.detail', trip_id=item['trip_id']) }}">{{ _('Details') }}</a></td></tr>{% endfor %}</tbody></table></div>{% else %}<p class="muted">{{ _('No request history.') }}</p>{% endif %}
+</section>
+{% endblock %}

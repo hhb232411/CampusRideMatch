@@ -1,0 +1,284 @@
+[
+  {
+    "size": 100,
+    "condition": "full",
+    "counts": {
+      "users": 100,
+      "location_areas": 20,
+      "trips": 100,
+      "match_requests": 281,
+      "trip_participants": 135,
+      "reviews": 62,
+      "notifications": 141
+    },
+    "trip_statuses": {
+      "Cancelled": 13,
+      "Completed": 25,
+      "Full": 10,
+      "Open": 52
+    },
+    "ratings": {
+      "1": 2,
+      "2": 10,
+      "3": 14,
+      "4": 16,
+      "5": 20
+    },
+    "participant_users": 76,
+    "checks": {
+      "foreign_keys": 0,
+      "seat_mismatch": 0,
+      "accepted_without_active_participant": 0,
+      "ended_without_timestamp": 0,
+      "trip_status_seat_mismatch": 0,
+      "participant_request_identity_mismatch": 0,
+      "active_participant_without_accepted_request": 0,
+      "ended_participant_without_cancelled_request": 0,
+      "publisher_request": 0,
+      "publisher_participation": 0,
+      "terminal_trip_request_mismatch": 0,
+      "cancelled_trip_participation_mismatch": 0,
+      "ineligible_review": 0,
+      "future_completed": 0,
+      "expired_active_trip": 0,
+      "schedule_conflicts": 0
+    },
+    "integrity_check": "ok",
+    "logical_sha256": "c1003ec27a6744165b79c907115e1d5b5a90cfe555d8e0fbe5339cf6b3d1af54"
+  },
+  {
+    "size": 100,
+    "condition": "reduced",
+    "counts": {
+      "users": 100,
+      "location_areas": 20,
+      "trips": 100,
+      "match_requests": 281,
+      "trip_participants": 135,
+      "reviews": 62,
+      "notifications": 141
+    },
+    "trip_statuses": {
+      "Cancelled": 13,
+      "Completed": 25,
+      "Full": 10,
+      "Open": 52
+    },
+    "ratings": {
+      "1": 2,
+      "2": 10,
+      "3": 14,
+      "4": 16,
+      "5": 20
+    },
+    "participant_users": 76,
+    "checks": {
+      "foreign_keys": 0,
+      "seat_mismatch": 0,
+      "accepted_without_active_participant": 0,
+      "ended_without_timestamp": 0,
+      "trip_status_seat_mismatch": 0,
+      "participant_request_identity_mismatch": 0,
+      "active_participant_without_accepted_request": 0,
+      "ended_participant_without_cancelled_request": 0,
+      "publisher_request": 0,
+      "publisher_participation": 0,
+      "terminal_trip_request_mismatch": 0,
+      "cancelled_trip_participation_mismatch": 0,
+      "ineligible_review": 0,
+      "future_completed": 0,
+      "expired_active_trip": 0,
+      "schedule_conflicts": 0
+    },
+    "integrity_check": "ok",
+    "logical_sha256": "c1003ec27a6744165b79c907115e1d5b5a90cfe555d8e0fbe5339cf6b3d1af54"
+  },
+  {
+    "size": 1000,
+    "condition": "full",
+    "counts": {
+      "users": 100,
+      "location_areas": 20,
+      "trips": 1000,
+      "match_requests": 2688,
+      "trip_participants": 1451,
+      "reviews": 682,
+      "notifications": 1479
+    },
+    "trip_statuses": {
+      "Cancelled": 78,
+      "Completed": 244,
+      "Full": 140,
+      "Open": 538
+    },
+    "ratings": {
+      "1": 33,
+      "2": 80,
+      "3": 138,
+      "4": 231,
+      "5": 200
+    },
+    "participant_users": 100,
+    "checks": {
+      "foreign_keys": 0,
+      "seat_mismatch": 0,
+      "accepted_without_active_participant": 0,
+      "ended_without_timestamp": 0,
+      "trip_status_seat_mismatch": 0,
+      "participant_request_identity_mismatch": 0,
+      "active_participant_without_accepted_request": 0,
+      "ended_participant_without_cancelled_request": 0,
+      "publisher_request": 0,
+      "publisher_participation": 0,
+      "terminal_trip_request_mismatch": 0,
+      "cancelled_trip_participation_mismatch": 0,
+      "ineligible_review": 0,
+      "future_completed": 0,
+      "expired_active_trip": 0,
+      "schedule_conflicts": 0
+    },
+    "integrity_check": "ok",
+    "logical_sha256": "e82ffc94f94858ac3367e2e2897f122e7d15d6d73b9deeabca9e4fb85553fc56"
+  },
+  {
+    "size": 1000,
+    "condition": "reduced",
+    "counts": {
+      "users": 100,
+      "location_areas": 20,
+      "trips": 1000,
+      "match_requests": 2688,
+      "trip_participants": 1451,
+      "reviews": 682,
+      "notifications": 1479
+    },
+    "trip_statuses": {
+      "Cancelled": 78,
+      "Completed": 244,
+      "Full": 140,
+      "Open": 538
+    },
+    "ratings": {
+      "1": 33,
+      "2": 80,
+      "3": 138,
+      "4": 231,
+      "5": 200
+    },
+    "participant_users": 100,
+    "checks": {
+      "foreign_keys": 0,
+      "seat_mismatch": 0,
+      "accepted_without_active_participant": 0,
+      "ended_without_timestamp": 0,
+      "trip_status_seat_mismatch": 0,
+      "participant_request_identity_mismatch": 0,
+      "active_participant_without_accepted_request": 0,
+      "ended_participant_without_cancelled_request": 0,
+      "publisher_request": 0,
+      "publisher_participation": 0,
+      "terminal_trip_request_mismatch": 0,
+      "cancelled_trip_participation_mismatch": 0,
+      "ineligible_review": 0,
+      "future_completed": 0,
+      "expired_active_trip": 0,
+      "schedule_conflicts": 0
+    },
+    "integrity_check": "ok",
+    "logical_sha256": "e82ffc94f94858ac3367e2e2897f122e7d15d6d73b9deeabca9e4fb85553fc56"
+  },
+  {
+    "size": 5000,
+    "condition": "full",
+    "counts": {
+      "users": 100,
+      "location_areas": 20,
+      "trips": 5000,
+      "match_requests": 13389,
+      "trip_participants": 7248,
+      "reviews": 3060,
+      "notifications": 7591
+    },
+    "trip_statuses": {
+      "Cancelled": 390,
+      "Completed": 1084,
+      "Full": 712,
+      "Open": 2814
+    },
+    "ratings": {
+      "1": 132,
+      "2": 347,
+      "3": 611,
+      "4": 1059,
+      "5": 911
+    },
+    "participant_users": 100,
+    "checks": {
+      "foreign_keys": 0,
+      "seat_mismatch": 0,
+      "accepted_without_active_participant": 0,
+      "ended_without_timestamp": 0,
+      "trip_status_seat_mismatch": 0,
+      "participant_request_identity_mismatch": 0,
+      "active_participant_without_accepted_request": 0,
+      "ended_participant_without_cancelled_request": 0,
+      "publisher_request": 0,
+      "publisher_participation": 0,
+      "terminal_trip_request_mismatch": 0,
+      "cancelled_trip_participation_mismatch": 0,
+      "ineligible_review": 0,
+      "future_completed": 0,
+      "expired_active_trip": 0,
+      "schedule_conflicts": 0
+    },
+    "integrity_check": "ok",
+    "logical_sha256": "c1cbfc688b90f6c7679c820e091420db3a5fee55aa7688f7b1ecc895923550cd"
+  },
+  {
+    "size": 5000,
+    "condition": "reduced",
+    "counts": {
+      "users": 100,
+      "location_areas": 20,
+      "trips": 5000,
+      "match_requests": 13389,
+      "trip_participants": 7248,
+      "reviews": 3060,
+      "notifications": 7591
+    },
+    "trip_statuses": {
+      "Cancelled": 390,
+      "Completed": 1084,
+      "Full": 712,
+      "Open": 2814
+    },
+    "ratings": {
+      "1": 132,
+      "2": 347,
+      "3": 611,
+      "4": 1059,
+      "5": 911
+    },
+    "participant_users": 100,
+    "checks": {
+      "foreign_keys": 0,
+      "seat_mismatch": 0,
+      "accepted_without_active_participant": 0,
+      "ended_without_timestamp": 0,
+      "trip_status_seat_mismatch": 0,
+      "participant_request_identity_mismatch": 0,
+      "active_participant_without_accepted_request": 0,
+      "ended_participant_without_cancelled_request": 0,
+      "publisher_request": 0,
+      "publisher_participation": 0,
+      "terminal_trip_request_mismatch": 0,
+      "cancelled_trip_participation_mismatch": 0,
+      "ineligible_review": 0,
+      "future_completed": 0,
+      "expired_active_trip": 0,
+      "schedule_conflicts": 0
+    },
+    "integrity_check": "ok",
+    "logical_sha256": "c1cbfc688b90f6c7679c820e091420db3a5fee55aa7688f7b1ecc895923550cd"
+  }
+]

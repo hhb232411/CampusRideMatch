@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}{{ _('Search trips') }} - Campus Ride Match{% endblock %}
+{% block content %}
+<div class="page-intro">
+  <p class="eyebrow">{{ _('Find your next ride') }}</p>
+  <h1>{{ _('Search trips') }}</h1>
+  <p class="muted">{{ _('Every filter is optional. Leave a field at “All” to see more available trips.') }}</p>
+</div>
+<form method="get" class="form-card form-grid search-form">
+  <label class="date-filter full">{{ _('Date') }} <span class="optional">{{ _('All dates') }}</span><input type="date" name="trip_date" value="{{ request.args.get('trip_date', '') }}"></label>
+  <div class="area-filter">
+    <label for="origin-area-select">{{ _('Origin / 起点') }}</label>
+    <select id="origin-area-select" class="searchable-area-select" name="origin_area_id" data-search-placeholder="{{ _('Search area') }}" data-no-results="{{ _('No matching areas') }}" aria-label="Origin fixed area"><option value="">{{ _('All origins') }}</option>{% for a in areas %}<option value="{{ a['id'] }}" {% if request.args.get('origin_area_id') == a['id']|string %}selected{% endif %}>{{ a['name'] }}</option>{% endfor %}</select>
+    <small>{{ _('Open the list and search in English or Chinese.') }}</small>
+  </div>
+  <div class="area-filter">
+    <label for="destination-area-select">{{ _('Destination / 终点') }}</label>
+    <select id="destination-area-select" class="searchable-area-select" name="destination_area_id" data-search-placeholder="{{ _('Search area') }}" data-no-results="{{ _('No matching areas') }}" aria-label="Destination fixed area"><option value="">{{ _('All destinations') }}</option>{% for a in areas %}<option value="{{ a['id'] }}" {% if request.args.get('destination_area_id') == a['id']|string %}selected{% endif %}>{{ a['name'] }}</option>{% endfor %}</select>
+    <small>{{ _('Open the list and search in English or Chinese.') }}</small>
+  </div>
+  <label>{{ _('Earliest acceptable time') }} <span class="optional">{{ _('Any time') }}</span><input type="time" name="start_time" value="{{ request.args.get('start_time', '') }}"></label>
+  <label>{{ _('Latest acceptable time') }} <span class="optional">{{ _('Any time') }}</span><input type="time" name="end_time" value="{{ request.args.get('end_time', '') }}"></label>
+  <label class="checkbox-row full"><input type="checkbox" name="include_full" value="1" {% if include_full %}checked{% endif %}>{{ _('Include full trips') }}</label>
+  <div class="actions full"><button>{{ _('Apply filters') }}</button><a class="button secondary" href="{{ url_for('trips.search') }}">{{ _('Show all') }}</a></div>
+</form>
+  <div class="results-heading"><h2>{{ _('Matching trips') }}</h2><span>{{ results|length }} {{ _('result') if results|length == 1 else _('results') }}</span></div>
+  {% if results %}<div class="card-grid trip-results">
+    {% for trip in results %}<article class="card">
+      <div class="trip-card-top"><span class="trip-date">{{ trip['trip_date'] }}</span>{% if trip['status'] == 'Full' %}<span class="badge full">{{ _('Full') }}</span>{% else %}<span class="seat-pill">{{ trip['available_seats'] }} {{ _('seat') if trip['available_seats'] == 1 else _('seats') }}</span>{% endif %}</div>
+      <h3>{{ trip['origin_area'] }} &rarr; {{ trip['destination_area'] }}</h3>
+      <p class="trip-time">{{ trip['start_time'] }}&ndash;{{ trip['end_time'] }}</p>
+      <p class="muted">{{ trip['origin_detail'] or _('Specific pickup not set') }} &rarr; {{ trip['destination_detail'] or _('Specific drop-off not set') }}</p>
+      <div class="occupancy"><span><strong>{{ trip['publisher_party_size'] + trip['active_participant_count'] }}</strong> {{ _('people currently') }}</span><span><strong>{{ trip['available_seats'] }}</strong> {{ _('seats remaining') }}</span></div>
+      <div class="card-footer"><span>{{ _('By') }} {{ trip['publisher_name'] }}</span><span class="card-actions">{% if trip['status'] == 'Full' %}<span class="unavailable-label">{{ _('Cannot join') }}</span>{% endif %}<a href="{{ url_for('trips.detail', trip_id=trip['id']) }}">{{ _('View details') }} &rarr;</a></span></div>
+    </article>{% endfor %}
+  </div>{% else %}<div class="empty-state"><h3>{{ _('No trips found') }}</h3><p>{{ _('Try selecting “All” for one or more filters.') }}</p><a class="button secondary" href="{{ url_for('trips.search') }}">{{ _('Reset filters') }}</a></div>{% endif %}
+{% endblock %}

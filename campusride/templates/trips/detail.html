@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}{{ _('Trip') }} {{ trip['id'] }} - Campus Ride Match{% endblock %}
+{% block content %}
+<div class="page-heading"><div><h1>{{ trip['origin_area'] }} → {{ trip['destination_area'] }}</h1><p class="muted">{{ _('Published by') }} {{ trip['publisher_name'] }} · {{ _('Rating') }} {{ trip['publisher_rating'] or _('not rated') }} ({{ trip['publisher_review_count'] }})</p></div><span class="badge {{ trip['status']|lower }}">{{ _(trip['status']) }}</span></div>
+<div class="two-column">
+  <section class="card details">
+    <h2>{{ _('Trip details') }}</h2>
+    <dl>
+      <dt>{{ _('Date') }}</dt><dd>{{ trip['trip_date'] }}</dd>
+      <dt>{{ _('Acceptable time') }}</dt><dd>{{ trip['start_time'] }}–{{ trip['end_time'] }}</dd>
+      <dt>{{ _('Pickup') }}</dt><dd>{{ trip['origin_area'] }}{% if trip['origin_detail'] %} — {{ trip['origin_detail'] }}{% endif %}</dd>
+      <dt>{{ _('Drop-off') }}</dt><dd>{{ trip['destination_area'] }}{% if trip['destination_detail'] %} — {{ trip['destination_detail'] }}{% endif %}</dd>
+      <dt>{{ _('Publisher party size') }}</dt><dd>{{ trip['publisher_party_size'] }}</dd>
+      <dt>{{ _('Current people') }}</dt><dd>{{ trip['publisher_party_size'] + trip['active_participant_count'] }}</dd>
+      <dt>{{ _('Seats remaining') }}</dt><dd>{{ trip['available_seats'] }} / {{ trip['seat_capacity'] }}</dd>
+    </dl>
+    {% if g.user %}
+      <div class="actions">
+      {% if g.user['id'] == trip['publisher_id'] %}
+        {% if trip['status'] in ['Open', 'Full'] %}<a class="button secondary" href="{{ url_for('trips.edit', trip_id=trip['id']) }}">{{ _('Edit') }}</a>
+        <form method="post" action="{{ url_for('trips.cancel_trip', trip_id=trip['id']) }}"><button class="danger" data-confirm="{{ _('Cancel this trip?') }}">{{ _('Cancel trip') }}</button></form>
+        <form method="post" action="{{ url_for('trips.complete_trip', trip_id=trip['id']) }}"><button data-confirm="{{ _('Mark this trip completed?') }}">{{ _('Complete trip') }}</button></form>{% endif %}
+      {% elif (not viewer_participation or viewer_participation['status'] != 'Active') and (not viewer_request or viewer_request['status'] not in ['Pending', 'Accepted']) and trip['status'] == 'Open' and not trip_expired %}
+        <form method="post" action="{{ url_for('trips.send_request', trip_id=trip['id']) }}"><button>{{ _('Request to join') }}</button></form>
+      {% elif (not viewer_participation or viewer_participation['status'] != 'Active') and (not viewer_request or viewer_request['status'] not in ['Pending', 'Accepted']) and trip['status'] == 'Full' %}
+        <span class="unavailable-label">{{ _('Full · Join requests are closed') }}</span>
+      {% elif viewer_participation and viewer_participation['status'] == 'Active' %}
+        <span>{{ _('Participation') }}: <strong>{{ _('Active') }}</strong></span>
+      {% elif viewer_request %}
+        <span>{{ _('Your request') }}: <strong>{{ _(viewer_request['status']) }}</strong></span>
+        {% if viewer_request['status'] == 'Pending' %}<form method="post" action="{{ url_for('trips.cancel_request', request_id=viewer_request['id']) }}"><button class="secondary">{{ _('Cancel request') }}</button></form>{% endif %}
+      {% endif %}
+      {% if trip_expired and trip['status'] in ['Open', 'Full'] %}<span class="unavailable-label">{{ _('This trip has expired; join requests are closed.') }}</span>{% endif %}
+      {% if trip['status'] == 'Completed' %}<a class="button" href="{{ url_for('trips.review', trip_id=trip['id']) }}">{{ _('Leave a review') }}</a>{% endif %}
+      </div>
+    {% else %}<p><a href="{{ url_for('auth.login') }}">{{ _('Log in') }}</a> {{ _('to request this trip.') }}</p>{% endif %}
+  </section>
+  <section class="card">
+    <h2>{{ _('Participants') }}</h2>
+    {% if participants %}<ul class="plain-list">{% for p in participants %}<li><span>{{ p['display_name'] }} <span class="badge">{{ _(p['status']) }}</span></span>
+      {% if g.user and g.user['id'] == trip['publisher_id'] and p['status'] == 'Active' and trip['status'] in ['Open', 'Full'] %}<form method="post" action="{{ url_for('trips.remove_participant', participant_id=p['id']) }}"><button class="small danger" data-confirm="{{ _('Remove this participant?') }}">{{ _('Remove') }}</button></form>{% endif %}</li>{% endfor %}</ul>
+    {% else %}<p class="muted">{{ _('No accepted participants yet.') }}</p>{% endif %}
+    {% if viewer_participation and viewer_participation['status'] == 'Active' and trip['status'] in ['Open', 'Full'] %}<form method="post" action="{{ url_for('trips.leave_trip', participant_id=viewer_participation['id']) }}"><button class="danger">{{ _('Leave trip') }}</button></form>{% endif %}
+  </section>
+</div>
+{% if can_see_publisher_contact %}<section class="card contact"><h2>{{ _('Publisher contact') }}</h2><p>{{ trip['publisher_name'] }} · {{ trip['publisher_email'] }}{% if trip['publisher_phone'] %} · {{ trip['publisher_phone'] }}{% endif %}</p><small>{{ _('Visible because your request was accepted and your participation is active.') }}</small></section>{% endif %}
+{% if visible_contacts %}<section class="card contact"><h2>{{ _('Participant contacts') }}</h2>{% for c in visible_contacts %}<p>{{ c['display_name'] }} · {{ c['email'] }}{% if c['phone'] %} · {{ c['phone'] }}{% endif %}</p>{% endfor %}<small>{{ _('Visible only to the trip publisher.') }}</small></section>{% endif %}
+<script>for (const element of document.querySelectorAll('[data-confirm]')) { element.addEventListener('click', event => { if (!confirm(element.dataset.confirm)) event.preventDefault(); }); }</script>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}{{ _('Database insights') }} - Campus Ride Match{% endblock %}
+{% block content %}
+<div class="page-heading">
+  <div>
+    <h1>{{ _('Database insights') }}</h1>
+    <p class="muted">{{ _('Live aggregate results calculated with SQL GROUP BY, COUNT, AVG, and multi-table JOINs.') }}</p>
+  </div>
+</div>
+
+<section>
+  <h2>{{ _('Trips by status') }}</h2>
+  <div class="card-grid stats">
+    {% for item in status_counts %}
+      <article class="card"><strong>{{ item['trip_count'] }}</strong><span>{{ _(item['status']) }}</span></article>
+    {% else %}
+      <p class="muted">{{ _('No trips to show.') }}</p>
+    {% endfor %}
+  </div>
+</section>
+
+<div class="two-column">
+  <section class="card">
+    <h2>{{ _('Popular origins') }}</h2>
+    <ol>{% for item in popular_origins %}<li>{{ item['area_name'] }} ({{ item['trip_count'] }})</li>{% else %}<li>{{ _('No trips to show.') }}</li>{% endfor %}</ol>
+  </section>
+  <section class="card">
+    <h2>{{ _('Popular destinations') }}</h2>
+    <ol>{% for item in popular_destinations %}<li>{{ item['area_name'] }} ({{ item['trip_count'] }})</li>{% else %}<li>{{ _('No trips to show.') }}</li>{% endfor %}</ol>
+  </section>
+</div>
+
+<section class="card">
+  <h2>{{ _('Popular routes') }}</h2>
+  <ol>{% for item in popular_routes %}<li>{{ item['origin_area'] }} &rarr; {{ item['destination_area'] }} ({{ item['trip_count'] }})</li>{% else %}<li>{{ _('No trips to show.') }}</li>{% endfor %}</ol>
+</section>
+
+<section class="stats card-grid">
+  <article class="card"><strong>{{ rating_summary['average_rating'] or '—' }}</strong><span>{{ _('Average rating') }}</span></article>
+  <article class="card"><strong>{{ rating_summary['review_count'] }}</strong><span>{{ _('Reviews') }}</span></article>
+  <article class="card"><strong>{{ rating_summary['rated_user_count'] }}</strong><span>{{ _('Rated users') }}</span></article>
+</section>
+{% endblock %}

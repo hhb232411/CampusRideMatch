@@ -1,0 +1,461 @@
+[
+  {
+    "size": 100,
+    "query": "trip_search",
+    "case": "q1",
+    "sql": "SELECT t.*, u.display_name AS publisher_name,\n                   oa.name AS origin_area, da.name AS destination_area,\n                   COUNT(tp.id) AS active_participant_count\n            FROM trips t\n            JOIN users u ON u.id = t.publisher_id\n            JOIN location_areas oa ON oa.id = t.origin_area_id\n            JOIN location_areas da ON da.id = t.destination_area_id\n            LEFT JOIN trip_participants tp\n              ON tp.trip_id = t.id AND tp.status = 'Active'\n            WHERE (t.trip_date > ? OR (t.trip_date = ? AND t.end_time >= ?)) AND t.status = 'Open' AND t.available_seats > 0 AND t.trip_date = ? AND t.origin_area_id = ? AND t.destination_area_id = ? AND t.start_time <= ? AND t.end_time >= ?\n            GROUP BY t.id\n            ORDER BY CASE t.status WHEN 'Open' THEN 0 ELSE 1 END,\n                     t.trip_date, t.start_time, t.created_at",
+    "parameters": [
+      "2026-11-10",
+      "2026-11-10",
+      "12:00",
+      "2026-11-20",
+      "6",
+      "17",
+      "18:55",
+      "18:10"
+    ],
+    "selection": "Open-trip ID quartile; source trip 23",
+    "result_rows": 1,
+    "result_sha256": "945d6215b2747931f5aedb794c5bf11ca73c880ae91b7314ca2bb616dc361a99"
+  },
+  {
+    "size": 100,
+    "query": "trip_search",
+    "case": "q2",
+    "sql": "SELECT t.*, u.display_name AS publisher_name,\n                   oa.name AS origin_area, da.name AS destination_area,\n                   COUNT(tp.id) AS active_participant_count\n            FROM trips t\n            JOIN users u ON u.id = t.publisher_id\n            JOIN location_areas oa ON oa.id = t.origin_area_id\n            JOIN location_areas da ON da.id = t.destination_area_id\n            LEFT JOIN trip_participants tp\n              ON tp.trip_id = t.id AND tp.status = 'Active'\n            WHERE (t.trip_date > ? OR (t.trip_date = ? AND t.end_time >= ?)) AND t.status = 'Open' AND t.available_seats > 0 AND t.trip_date = ? AND t.origin_area_id = ? AND t.destination_area_id = ? AND t.start_time <= ? AND t.end_time >= ?\n            GROUP BY t.id\n            ORDER BY CASE t.status WHEN 'Open' THEN 0 ELSE 1 END,\n                     t.trip_date, t.start_time, t.created_at",
+    "parameters": [
+      "2026-11-10",
+      "2026-11-10",
+      "12:00",
+      "2026-11-20",
+      "19",
+      "6",
+      "10:50",
+      "09:20"
+    ],
+    "selection": "Open-trip ID quartile; source trip 54",
+    "result_rows": 1,
+    "result_sha256": "dbd3074936b071c93ffbb7c85aff1325d20ec683bcf063fef82534f6b8747d43"
+  },
+  {
+    "size": 100,
+    "query": "trip_search",
+    "case": "q3",
+    "sql": "SELECT t.*, u.display_name AS publisher_name,\n                   oa.name AS origin_area, da.name AS destination_area,\n                   COUNT(tp.id) AS active_participant_count\n            FROM trips t\n            JOIN users u ON u.id = t.publisher_id\n            JOIN location_areas oa ON oa.id = t.origin_area_id\n            JOIN location_areas da ON da.id = t.destination_area_id\n            LEFT JOIN trip_participants tp\n              ON tp.trip_id = t.id AND tp.status = 'Active'\n            WHERE (t.trip_date > ? OR (t.trip_date = ? AND t.end_time >= ?)) AND t.status = 'Open' AND t.available_seats > 0 AND t.trip_date = ? AND t.origin_area_id = ? AND t.destination_area_id = ? AND t.start_time <= ? AND t.end_time >= ?\n            GROUP BY t.id\n            ORDER BY CASE t.status WHEN 'Open' THEN 0 ELSE 1 END,\n                     t.trip_date, t.start_time, t.created_at",
+    "parameters": [
+      "2026-11-10",
+      "2026-11-10",
+      "12:00",
+      "2026-11-17",
+      "2",
+      "10",
+      "16:10",
+      "15:10"
+    ],
+    "selection": "Open-trip ID quartile; source trip 75",
+    "result_rows": 1,
+    "result_sha256": "ef7f37e27e2d703e6a03f518b1f2e2ae04cd2e578bb763b41b9617983d0e5bd3"
+  },
+  {
+    "size": 100,
+    "query": "browse_open",
+    "case": "all",
+    "sql": "SELECT t.*, u.display_name AS publisher_name,\n                   oa.name AS origin_area, da.name AS destination_area,\n                   COUNT(tp.id) AS active_participant_count\n            FROM trips t\n            JOIN users u ON u.id = t.publisher_id\n            JOIN location_areas oa ON oa.id = t.origin_area_id\n            JOIN location_areas da ON da.id = t.destination_area_id\n            LEFT JOIN trip_participants tp\n              ON tp.trip_id = t.id AND tp.status = 'Active'\n            WHERE (t.trip_date > ? OR (t.trip_date = ? AND t.end_time >= ?)) AND t.status = 'Open' AND t.available_seats > 0\n            GROUP BY t.id\n            ORDER BY CASE t.status WHEN 'Open' THEN 0 ELSE 1 END,\n                     t.trip_date, t.start_time, t.created_at",
+    "parameters": [
+      "2026-11-10",
+      "2026-11-10",
+      "12:00"
+    ],
+    "selection": "All currently available trips; no optional filters",
+    "result_rows": 52,
+    "result_sha256": "12a61ac495a691722eaef115051d574cdfe242dc13f69769701b7c1758ffdf06"
+  },
+  {
+    "size": 100,
+    "query": "my_joined_trips",
+    "case": "q1",
+    "sql": "SELECT t.*, tp.status AS participation_status, oa.name AS origin_area,\n               da.name AS destination_area, u.display_name AS publisher_name\n        FROM trip_participants tp\n        JOIN trips t ON t.id = tp.trip_id\n        JOIN users u ON u.id = t.publisher_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE tp.user_id = ? ORDER BY t.trip_date DESC, t.start_time",
+    "parameters": [
+      64
+    ],
+    "selection": "Non-empty user-count quartile; user 64, 1 records",
+    "result_rows": 1,
+    "result_sha256": "6f0a72b5b502a985e58c18e7e8d5da36f5e362fb674aac27cb8a9eeea0154947"
+  },
+  {
+    "size": 100,
+    "query": "my_joined_trips",
+    "case": "q2",
+    "sql": "SELECT t.*, tp.status AS participation_status, oa.name AS origin_area,\n               da.name AS destination_area, u.display_name AS publisher_name\n        FROM trip_participants tp\n        JOIN trips t ON t.id = tp.trip_id\n        JOIN users u ON u.id = t.publisher_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE tp.user_id = ? ORDER BY t.trip_date DESC, t.start_time",
+    "parameters": [
+      15
+    ],
+    "selection": "Non-empty user-count quartile; user 15, 2 records",
+    "result_rows": 2,
+    "result_sha256": "2926a642fb3443110bbe7d18043031a08ab6a617d8eb7bd98cafe1d2a0c6df71"
+  },
+  {
+    "size": 100,
+    "query": "my_joined_trips",
+    "case": "q3",
+    "sql": "SELECT t.*, tp.status AS participation_status, oa.name AS origin_area,\n               da.name AS destination_area, u.display_name AS publisher_name\n        FROM trip_participants tp\n        JOIN trips t ON t.id = tp.trip_id\n        JOIN users u ON u.id = t.publisher_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE tp.user_id = ? ORDER BY t.trip_date DESC, t.start_time",
+    "parameters": [
+      88
+    ],
+    "selection": "Non-empty user-count quartile; user 88, 2 records",
+    "result_rows": 2,
+    "result_sha256": "6dd981d1b0444a038fe5cfb277321e53153debe55636f59307b81a33389e8fc8"
+  },
+  {
+    "size": 100,
+    "query": "incoming_requests",
+    "case": "q1",
+    "sql": "SELECT mr.*, t.trip_date, t.start_time, t.end_time,\n               u.display_name AS requester_name, oa.name AS origin_area,\n               da.name AS destination_area\n        FROM match_requests mr\n        JOIN trips t ON t.id = mr.trip_id\n        JOIN users u ON u.id = mr.requester_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE t.publisher_id = ?\n        ORDER BY CASE mr.status WHEN 'Pending' THEN 0 ELSE 1 END, mr.created_at DESC",
+    "parameters": [
+      31
+    ],
+    "selection": "Non-empty user-count quartile; user 31, 3 records",
+    "result_rows": 3,
+    "result_sha256": "f3c3886d7cca1e3db54a40e8ee7f704e912f0a93564cb891c716b45d8bfa0748"
+  },
+  {
+    "size": 100,
+    "query": "incoming_requests",
+    "case": "q2",
+    "sql": "SELECT mr.*, t.trip_date, t.start_time, t.end_time,\n               u.display_name AS requester_name, oa.name AS origin_area,\n               da.name AS destination_area\n        FROM match_requests mr\n        JOIN trips t ON t.id = mr.trip_id\n        JOIN users u ON u.id = mr.requester_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE t.publisher_id = ?\n        ORDER BY CASE mr.status WHEN 'Pending' THEN 0 ELSE 1 END, mr.created_at DESC",
+    "parameters": [
+      45
+    ],
+    "selection": "Non-empty user-count quartile; user 45, 4 records",
+    "result_rows": 4,
+    "result_sha256": "6c72adbafbeabcd0a92aecba1a05922deaed0e94a8ad9c082ced3d7fe5ad8d74"
+  },
+  {
+    "size": 100,
+    "query": "incoming_requests",
+    "case": "q3",
+    "sql": "SELECT mr.*, t.trip_date, t.start_time, t.end_time,\n               u.display_name AS requester_name, oa.name AS origin_area,\n               da.name AS destination_area\n        FROM match_requests mr\n        JOIN trips t ON t.id = mr.trip_id\n        JOIN users u ON u.id = mr.requester_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE t.publisher_id = ?\n        ORDER BY CASE mr.status WHEN 'Pending' THEN 0 ELSE 1 END, mr.created_at DESC",
+    "parameters": [
+      85
+    ],
+    "selection": "Non-empty user-count quartile; user 85, 6 records",
+    "result_rows": 6,
+    "result_sha256": "756bc0a2b0f7c3b50e08f75cc72213cf2597232712e9f85dbb5bb664b465276b"
+  },
+  {
+    "size": 100,
+    "query": "popular_routes",
+    "case": "all",
+    "sql": "SELECT oa.name AS origin_area, da.name AS destination_area,\n                  COUNT(*) AS trip_count\n           FROM trips t\n           JOIN location_areas oa ON oa.id = t.origin_area_id\n           JOIN location_areas da ON da.id = t.destination_area_id\n           GROUP BY t.origin_area_id, t.destination_area_id,\n                    oa.name, da.name\n           ORDER BY trip_count DESC, oa.name, da.name\n           LIMIT 5",
+    "parameters": [],
+    "selection": "Application top-five route aggregation",
+    "result_rows": 5,
+    "result_sha256": "6545cb491d5e307b5645a10830624b19768599e830120d0e29b7299e6a40eddf"
+  },
+  {
+    "size": 1000,
+    "query": "trip_search",
+    "case": "q1",
+    "sql": "SELECT t.*, u.display_name AS publisher_name,\n                   oa.name AS origin_area, da.name AS destination_area,\n                   COUNT(tp.id) AS active_participant_count\n            FROM trips t\n            JOIN users u ON u.id = t.publisher_id\n            JOIN location_areas oa ON oa.id = t.origin_area_id\n            JOIN location_areas da ON da.id = t.destination_area_id\n            LEFT JOIN trip_participants tp\n              ON tp.trip_id = t.id AND tp.status = 'Active'\n            WHERE (t.trip_date > ? OR (t.trip_date = ? AND t.end_time >= ?)) AND t.status = 'Open' AND t.available_seats > 0 AND t.trip_date = ? AND t.origin_area_id = ? AND t.destination_area_id = ? AND t.start_time <= ? AND t.end_time >= ?\n            GROUP BY t.id\n            ORDER BY CASE t.status WHEN 'Open' THEN 0 ELSE 1 END,\n                     t.trip_date, t.start_time, t.created_at",
+    "parameters": [
+      "2026-11-10",
+      "2026-11-10",
+      "12:00",
+      "2026-12-02",
+      "4",
+      "8",
+      "10:50",
+      "09:20"
+    ],
+    "selection": "Open-trip ID quartile; source trip 250",
+    "result_rows": 2,
+    "result_sha256": "6aefda5482e6d8ad51f34bb3651c0c95bcc7cb2fc8ca791bb5e3e85306aac5b2"
+  },
+  {
+    "size": 1000,
+    "query": "trip_search",
+    "case": "q2",
+    "sql": "SELECT t.*, u.display_name AS publisher_name,\n                   oa.name AS origin_area, da.name AS destination_area,\n                   COUNT(tp.id) AS active_participant_count\n            FROM trips t\n            JOIN users u ON u.id = t.publisher_id\n            JOIN location_areas oa ON oa.id = t.origin_area_id\n            JOIN location_areas da ON da.id = t.destination_area_id\n            LEFT JOIN trip_participants tp\n              ON tp.trip_id = t.id AND tp.status = 'Active'\n            WHERE (t.trip_date > ? OR (t.trip_date = ? AND t.end_time >= ?)) AND t.status = 'Open' AND t.available_seats > 0 AND t.trip_date = ? AND t.origin_area_id = ? AND t.destination_area_id = ? AND t.start_time <= ? AND t.end_time >= ?\n            GROUP BY t.id\n            ORDER BY CASE t.status WHEN 'Open' THEN 0 ELSE 1 END,\n                     t.trip_date, t.start_time, t.created_at",
+    "parameters": [
+      "2026-11-10",
+      "2026-11-10",
+      "12:00",
+      "2026-12-01",
+      "2",
+      "14",
+      "16:00",
+      "15:00"
+    ],
+    "selection": "Open-trip ID quartile; source trip 479",
+    "result_rows": 1,
+    "result_sha256": "7ecd8427c833a2a2a85ac74b609617bf60ec2fe62f8b7cdec2bf18c625fc91a4"
+  },
+  {
+    "size": 1000,
+    "query": "trip_search",
+    "case": "q3",
+    "sql": "SELECT t.*, u.display_name AS publisher_name,\n                   oa.name AS origin_area, da.name AS destination_area,\n                   COUNT(tp.id) AS active_participant_count\n            FROM trips t\n            JOIN users u ON u.id = t.publisher_id\n            JOIN location_areas oa ON oa.id = t.origin_area_id\n            JOIN location_areas da ON da.id = t.destination_area_id\n            LEFT JOIN trip_participants tp\n              ON tp.trip_id = t.id AND tp.status = 'Active'\n            WHERE (t.trip_date > ? OR (t.trip_date = ? AND t.end_time >= ?)) AND t.status = 'Open' AND t.available_seats > 0 AND t.trip_date = ? AND t.origin_area_id = ? AND t.destination_area_id = ? AND t.start_time <= ? AND t.end_time >= ?\n            GROUP BY t.id\n            ORDER BY CASE t.status WHEN 'Open' THEN 0 ELSE 1 END,\n                     t.trip_date, t.start_time, t.created_at",
+    "parameters": [
+      "2026-11-10",
+      "2026-11-10",
+      "12:00",
+      "2026-12-08",
+      "5",
+      "2",
+      "16:30",
+      "15:00"
+    ],
+    "selection": "Open-trip ID quartile; source trip 720",
+    "result_rows": 1,
+    "result_sha256": "927d6df8f0efc47b2d552be303a4247fe71a132e48cc75c6dd20f2ea158c16dc"
+  },
+  {
+    "size": 1000,
+    "query": "browse_open",
+    "case": "all",
+    "sql": "SELECT t.*, u.display_name AS publisher_name,\n                   oa.name AS origin_area, da.name AS destination_area,\n                   COUNT(tp.id) AS active_participant_count\n            FROM trips t\n            JOIN users u ON u.id = t.publisher_id\n            JOIN location_areas oa ON oa.id = t.origin_area_id\n            JOIN location_areas da ON da.id = t.destination_area_id\n            LEFT JOIN trip_participants tp\n              ON tp.trip_id = t.id AND tp.status = 'Active'\n            WHERE (t.trip_date > ? OR (t.trip_date = ? AND t.end_time >= ?)) AND t.status = 'Open' AND t.available_seats > 0\n            GROUP BY t.id\n            ORDER BY CASE t.status WHEN 'Open' THEN 0 ELSE 1 END,\n                     t.trip_date, t.start_time, t.created_at",
+    "parameters": [
+      "2026-11-10",
+      "2026-11-10",
+      "12:00"
+    ],
+    "selection": "All currently available trips; no optional filters",
+    "result_rows": 538,
+    "result_sha256": "bbaed1cdc05a1de19aae1ec672c6100f1833d59a498071eab49379ffb0b6bbdb"
+  },
+  {
+    "size": 1000,
+    "query": "my_joined_trips",
+    "case": "q1",
+    "sql": "SELECT t.*, tp.status AS participation_status, oa.name AS origin_area,\n               da.name AS destination_area, u.display_name AS publisher_name\n        FROM trip_participants tp\n        JOIN trips t ON t.id = tp.trip_id\n        JOIN users u ON u.id = t.publisher_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE tp.user_id = ? ORDER BY t.trip_date DESC, t.start_time",
+    "parameters": [
+      60
+    ],
+    "selection": "Non-empty user-count quartile; user 60, 12 records",
+    "result_rows": 12,
+    "result_sha256": "502f7ee69e6a2701e01a326e70b4b3cca2e0becaacb05ca54d3df674b3fce827"
+  },
+  {
+    "size": 1000,
+    "query": "my_joined_trips",
+    "case": "q2",
+    "sql": "SELECT t.*, tp.status AS participation_status, oa.name AS origin_area,\n               da.name AS destination_area, u.display_name AS publisher_name\n        FROM trip_participants tp\n        JOIN trips t ON t.id = tp.trip_id\n        JOIN users u ON u.id = t.publisher_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE tp.user_id = ? ORDER BY t.trip_date DESC, t.start_time",
+    "parameters": [
+      86
+    ],
+    "selection": "Non-empty user-count quartile; user 86, 14 records",
+    "result_rows": 14,
+    "result_sha256": "908178dad697447b7929d677ca6671470ab2a9a4c07a4f09932e99f6c53a2f4f"
+  },
+  {
+    "size": 1000,
+    "query": "my_joined_trips",
+    "case": "q3",
+    "sql": "SELECT t.*, tp.status AS participation_status, oa.name AS origin_area,\n               da.name AS destination_area, u.display_name AS publisher_name\n        FROM trip_participants tp\n        JOIN trips t ON t.id = tp.trip_id\n        JOIN users u ON u.id = t.publisher_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE tp.user_id = ? ORDER BY t.trip_date DESC, t.start_time",
+    "parameters": [
+      25
+    ],
+    "selection": "Non-empty user-count quartile; user 25, 17 records",
+    "result_rows": 17,
+    "result_sha256": "a4cc4102cc1465554fbfa75f079fbde696d04e1b0e4f27facc9ee1251205f650"
+  },
+  {
+    "size": 1000,
+    "query": "incoming_requests",
+    "case": "q1",
+    "sql": "SELECT mr.*, t.trip_date, t.start_time, t.end_time,\n               u.display_name AS requester_name, oa.name AS origin_area,\n               da.name AS destination_area\n        FROM match_requests mr\n        JOIN trips t ON t.id = mr.trip_id\n        JOIN users u ON u.id = mr.requester_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE t.publisher_id = ?\n        ORDER BY CASE mr.status WHEN 'Pending' THEN 0 ELSE 1 END, mr.created_at DESC",
+    "parameters": [
+      92
+    ],
+    "selection": "Non-empty user-count quartile; user 92, 19 records",
+    "result_rows": 19,
+    "result_sha256": "4fd24d5d25dd8221c14f24acbf75ae794869ccb07c5bdfba2b02026844e9ddbc"
+  },
+  {
+    "size": 1000,
+    "query": "incoming_requests",
+    "case": "q2",
+    "sql": "SELECT mr.*, t.trip_date, t.start_time, t.end_time,\n               u.display_name AS requester_name, oa.name AS origin_area,\n               da.name AS destination_area\n        FROM match_requests mr\n        JOIN trips t ON t.id = mr.trip_id\n        JOIN users u ON u.id = mr.requester_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE t.publisher_id = ?\n        ORDER BY CASE mr.status WHEN 'Pending' THEN 0 ELSE 1 END, mr.created_at DESC",
+    "parameters": [
+      38
+    ],
+    "selection": "Non-empty user-count quartile; user 38, 27 records",
+    "result_rows": 27,
+    "result_sha256": "71c4b5539365542dad1e3ad3d7009647577e54b1ac3edff1abefbde20e147416"
+  },
+  {
+    "size": 1000,
+    "query": "incoming_requests",
+    "case": "q3",
+    "sql": "SELECT mr.*, t.trip_date, t.start_time, t.end_time,\n               u.display_name AS requester_name, oa.name AS origin_area,\n               da.name AS destination_area\n        FROM match_requests mr\n        JOIN trips t ON t.id = mr.trip_id\n        JOIN users u ON u.id = mr.requester_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE t.publisher_id = ?\n        ORDER BY CASE mr.status WHEN 'Pending' THEN 0 ELSE 1 END, mr.created_at DESC",
+    "parameters": [
+      27
+    ],
+    "selection": "Non-empty user-count quartile; user 27, 34 records",
+    "result_rows": 34,
+    "result_sha256": "bc5dc16eb96db2fa85e8d3bc6252d4923e9c708f21fa62b94172bed18fe3d883"
+  },
+  {
+    "size": 1000,
+    "query": "popular_routes",
+    "case": "all",
+    "sql": "SELECT oa.name AS origin_area, da.name AS destination_area,\n                  COUNT(*) AS trip_count\n           FROM trips t\n           JOIN location_areas oa ON oa.id = t.origin_area_id\n           JOIN location_areas da ON da.id = t.destination_area_id\n           GROUP BY t.origin_area_id, t.destination_area_id,\n                    oa.name, da.name\n           ORDER BY trip_count DESC, oa.name, da.name\n           LIMIT 5",
+    "parameters": [],
+    "selection": "Application top-five route aggregation",
+    "result_rows": 5,
+    "result_sha256": "1955bc844d61817696d8371a9d9ac1e68a8b4e510ad8de8004f4470d4ac384d4"
+  },
+  {
+    "size": 5000,
+    "query": "trip_search",
+    "case": "q1",
+    "sql": "SELECT t.*, u.display_name AS publisher_name,\n                   oa.name AS origin_area, da.name AS destination_area,\n                   COUNT(tp.id) AS active_participant_count\n            FROM trips t\n            JOIN users u ON u.id = t.publisher_id\n            JOIN location_areas oa ON oa.id = t.origin_area_id\n            JOIN location_areas da ON da.id = t.destination_area_id\n            LEFT JOIN trip_participants tp\n              ON tp.trip_id = t.id AND tp.status = 'Active'\n            WHERE (t.trip_date > ? OR (t.trip_date = ? AND t.end_time >= ?)) AND t.status = 'Open' AND t.available_seats > 0 AND t.trip_date = ? AND t.origin_area_id = ? AND t.destination_area_id = ? AND t.start_time <= ? AND t.end_time >= ?\n            GROUP BY t.id\n            ORDER BY CASE t.status WHEN 'Open' THEN 0 ELSE 1 END,\n                     t.trip_date, t.start_time, t.created_at",
+    "parameters": [
+      "2026-11-10",
+      "2026-11-10",
+      "12:00",
+      "2026-12-04",
+      "1",
+      "4",
+      "13:40",
+      "12:10"
+    ],
+    "selection": "Open-trip ID quartile; source trip 1274",
+    "result_rows": 1,
+    "result_sha256": "25415efd50a4c393009bd275a3cd77c72b03a2c3705a9c2a2c5a03bff7dec3c4"
+  },
+  {
+    "size": 5000,
+    "query": "trip_search",
+    "case": "q2",
+    "sql": "SELECT t.*, u.display_name AS publisher_name,\n                   oa.name AS origin_area, da.name AS destination_area,\n                   COUNT(tp.id) AS active_participant_count\n            FROM trips t\n            JOIN users u ON u.id = t.publisher_id\n            JOIN location_areas oa ON oa.id = t.origin_area_id\n            JOIN location_areas da ON da.id = t.destination_area_id\n            LEFT JOIN trip_participants tp\n              ON tp.trip_id = t.id AND tp.status = 'Active'\n            WHERE (t.trip_date > ? OR (t.trip_date = ? AND t.end_time >= ?)) AND t.status = 'Open' AND t.available_seats > 0 AND t.trip_date = ? AND t.origin_area_id = ? AND t.destination_area_id = ? AND t.start_time <= ? AND t.end_time >= ?\n            GROUP BY t.id\n            ORDER BY CASE t.status WHEN 'Open' THEN 0 ELSE 1 END,\n                     t.trip_date, t.start_time, t.created_at",
+    "parameters": [
+      "2026-11-10",
+      "2026-11-10",
+      "12:00",
+      "2026-11-25",
+      "5",
+      "15",
+      "13:40",
+      "12:10"
+    ],
+    "selection": "Open-trip ID quartile; source trip 2468",
+    "result_rows": 1,
+    "result_sha256": "0d5cb22c4e139e077acb2b13a52ef2511ccb6d212a0de6f921b5c3e0b4c3f150"
+  },
+  {
+    "size": 5000,
+    "query": "trip_search",
+    "case": "q3",
+    "sql": "SELECT t.*, u.display_name AS publisher_name,\n                   oa.name AS origin_area, da.name AS destination_area,\n                   COUNT(tp.id) AS active_participant_count\n            FROM trips t\n            JOIN users u ON u.id = t.publisher_id\n            JOIN location_areas oa ON oa.id = t.origin_area_id\n            JOIN location_areas da ON da.id = t.destination_area_id\n            LEFT JOIN trip_participants tp\n              ON tp.trip_id = t.id AND tp.status = 'Active'\n            WHERE (t.trip_date > ? OR (t.trip_date = ? AND t.end_time >= ?)) AND t.status = 'Open' AND t.available_seats > 0 AND t.trip_date = ? AND t.origin_area_id = ? AND t.destination_area_id = ? AND t.start_time <= ? AND t.end_time >= ?\n            GROUP BY t.id\n            ORDER BY CASE t.status WHEN 'Open' THEN 0 ELSE 1 END,\n                     t.trip_date, t.start_time, t.created_at",
+    "parameters": [
+      "2026-11-10",
+      "2026-11-10",
+      "12:00",
+      "2026-12-01",
+      "4",
+      "17",
+      "09:55",
+      "09:10"
+    ],
+    "selection": "Open-trip ID quartile; source trip 3732",
+    "result_rows": 1,
+    "result_sha256": "2758aa83e8c6a3fcf51d929bdd62d8b21b5f452478230ea5a572092e5f8f68a5"
+  },
+  {
+    "size": 5000,
+    "query": "browse_open",
+    "case": "all",
+    "sql": "SELECT t.*, u.display_name AS publisher_name,\n                   oa.name AS origin_area, da.name AS destination_area,\n                   COUNT(tp.id) AS active_participant_count\n            FROM trips t\n            JOIN users u ON u.id = t.publisher_id\n            JOIN location_areas oa ON oa.id = t.origin_area_id\n            JOIN location_areas da ON da.id = t.destination_area_id\n            LEFT JOIN trip_participants tp\n              ON tp.trip_id = t.id AND tp.status = 'Active'\n            WHERE (t.trip_date > ? OR (t.trip_date = ? AND t.end_time >= ?)) AND t.status = 'Open' AND t.available_seats > 0\n            GROUP BY t.id\n            ORDER BY CASE t.status WHEN 'Open' THEN 0 ELSE 1 END,\n                     t.trip_date, t.start_time, t.created_at",
+    "parameters": [
+      "2026-11-10",
+      "2026-11-10",
+      "12:00"
+    ],
+    "selection": "All currently available trips; no optional filters",
+    "result_rows": 2814,
+    "result_sha256": "0559ee398840d17c5463ab4c1eec2339117512e5874f91778bb95838c056a3cd"
+  },
+  {
+    "size": 5000,
+    "query": "my_joined_trips",
+    "case": "q1",
+    "sql": "SELECT t.*, tp.status AS participation_status, oa.name AS origin_area,\n               da.name AS destination_area, u.display_name AS publisher_name\n        FROM trip_participants tp\n        JOIN trips t ON t.id = tp.trip_id\n        JOIN users u ON u.id = t.publisher_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE tp.user_id = ? ORDER BY t.trip_date DESC, t.start_time",
+    "parameters": [
+      88
+    ],
+    "selection": "Non-empty user-count quartile; user 88, 68 records",
+    "result_rows": 68,
+    "result_sha256": "c2d83af13cacec92e529fc46702b48ca8e518bcbb84fa13442d40b74c4481ddb"
+  },
+  {
+    "size": 5000,
+    "query": "my_joined_trips",
+    "case": "q2",
+    "sql": "SELECT t.*, tp.status AS participation_status, oa.name AS origin_area,\n               da.name AS destination_area, u.display_name AS publisher_name\n        FROM trip_participants tp\n        JOIN trips t ON t.id = tp.trip_id\n        JOIN users u ON u.id = t.publisher_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE tp.user_id = ? ORDER BY t.trip_date DESC, t.start_time",
+    "parameters": [
+      31
+    ],
+    "selection": "Non-empty user-count quartile; user 31, 73 records",
+    "result_rows": 73,
+    "result_sha256": "6d93951dd27bb12a59eaf5accc9d1bd89917ecbf061205c03c18910709247c92"
+  },
+  {
+    "size": 5000,
+    "query": "my_joined_trips",
+    "case": "q3",
+    "sql": "SELECT t.*, tp.status AS participation_status, oa.name AS origin_area,\n               da.name AS destination_area, u.display_name AS publisher_name\n        FROM trip_participants tp\n        JOIN trips t ON t.id = tp.trip_id\n        JOIN users u ON u.id = t.publisher_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE tp.user_id = ? ORDER BY t.trip_date DESC, t.start_time",
+    "parameters": [
+      70
+    ],
+    "selection": "Non-empty user-count quartile; user 70, 76 records",
+    "result_rows": 76,
+    "result_sha256": "52160509ceb645409fb1b98169c72096741838f2f034f6955cb08450822b9b8a"
+  },
+  {
+    "size": 5000,
+    "query": "incoming_requests",
+    "case": "q1",
+    "sql": "SELECT mr.*, t.trip_date, t.start_time, t.end_time,\n               u.display_name AS requester_name, oa.name AS origin_area,\n               da.name AS destination_area\n        FROM match_requests mr\n        JOIN trips t ON t.id = mr.trip_id\n        JOIN users u ON u.id = mr.requester_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE t.publisher_id = ?\n        ORDER BY CASE mr.status WHEN 'Pending' THEN 0 ELSE 1 END, mr.created_at DESC",
+    "parameters": [
+      10
+    ],
+    "selection": "Non-empty user-count quartile; user 10, 121 records",
+    "result_rows": 121,
+    "result_sha256": "89730013dfa57d85117eacc248e7ff1b71d87b6bf873e3d01ccc3b59405b7538"
+  },
+  {
+    "size": 5000,
+    "query": "incoming_requests",
+    "case": "q2",
+    "sql": "SELECT mr.*, t.trip_date, t.start_time, t.end_time,\n               u.display_name AS requester_name, oa.name AS origin_area,\n               da.name AS destination_area\n        FROM match_requests mr\n        JOIN trips t ON t.id = mr.trip_id\n        JOIN users u ON u.id = mr.requester_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE t.publisher_id = ?\n        ORDER BY CASE mr.status WHEN 'Pending' THEN 0 ELSE 1 END, mr.created_at DESC",
+    "parameters": [
+      5
+    ],
+    "selection": "Non-empty user-count quartile; user 5, 135 records",
+    "result_rows": 135,
+    "result_sha256": "c979ac60370c75db77f6e36b2c758319420b7d4c51b47b0f80693076c1fb4c67"
+  },
+  {
+    "size": 5000,
+    "query": "incoming_requests",
+    "case": "q3",
+    "sql": "SELECT mr.*, t.trip_date, t.start_time, t.end_time,\n               u.display_name AS requester_name, oa.name AS origin_area,\n               da.name AS destination_area\n        FROM match_requests mr\n        JOIN trips t ON t.id = mr.trip_id\n        JOIN users u ON u.id = mr.requester_id\n        JOIN location_areas oa ON oa.id = t.origin_area_id\n        JOIN location_areas da ON da.id = t.destination_area_id\n        WHERE t.publisher_id = ?\n        ORDER BY CASE mr.status WHEN 'Pending' THEN 0 ELSE 1 END, mr.created_at DESC",
+    "parameters": [
+      67
+    ],
+    "selection": "Non-empty user-count quartile; user 67, 145 records",
+    "result_rows": 145,
+    "result_sha256": "f4c5fe40c58738181284d3b6bd630427799eb7243c31af8a9c9169199c9430a9"
+  },
+  {
+    "size": 5000,
+    "query": "popular_routes",
+    "case": "all",
+    "sql": "SELECT oa.name AS origin_area, da.name AS destination_area,\n                  COUNT(*) AS trip_count\n           FROM trips t\n           JOIN location_areas oa ON oa.id = t.origin_area_id\n           JOIN location_areas da ON da.id = t.destination_area_id\n           GROUP BY t.origin_area_id, t.destination_area_id,\n                    oa.name, da.name\n           ORDER BY trip_count DESC, oa.name, da.name\n           LIMIT 5",
+    "parameters": [],
+    "selection": "Application top-five route aggregation",
+    "result_rows": 5,
+    "result_sha256": "2f391914e80bb9e7f81726cdace2a21e573406fa3565abe435f0985b2d6e7933"
+  }
+]

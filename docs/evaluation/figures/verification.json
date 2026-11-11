@@ -1,0 +1,16 @@
+{
+  "raw_summary_recomputed": true,
+  "balanced_order": true,
+  "datasets_identical_across_conditions_and_runs": true,
+  "workload_and_plans_identical_across_runs": true,
+  "timed_executions_per_run": 15840,
+  "matplotlib": "3.11.2",
+  "input_sha256": {
+    "docs/evaluation/main-2026-11-10/summary.csv": "f4775c5a5f6d2ac75bd262355cee0027b4f77c441ddb38a30d7893cab9bcfc87",
+    "docs/evaluation/repeat-2026-11-10/summary.csv": "52d076f55fc29a3d95968fcb2c0eabcd3b2addc6ebf44b1e17b9d1f7e38632d4"
+  },
+  "figures_sha256": {
+    "index_comparison.png": "23371ecc21d20b458f01f259884809093ab89df7782a1d85a36418eb82fae0b0",
+    "query_scaling.png": "049cc0b42bb432388f546a23fac7cae1f109daf4496d1b54fd738520661fef66"
+  }
+}

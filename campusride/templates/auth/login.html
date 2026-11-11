@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}{{ _('Log in') }} - Campus Ride Match{% endblock %}
+{% block content %}
+<div class="form-card narrow">
+  <h1>{{ _('Log in') }}</h1>
+  <p class="muted">{{ _('Welcome back. Enter your account details to continue.') }}</p>
+  <form method="post" class="auth-form">
+    <label>{{ _('Username') }}<input name="username" required autofocus value="{{ request.form.get('username', '') }}"></label>
+    <label>{{ _('Password') }}<input type="password" name="password" required></label>
+    <button type="submit" class="wide-button">{{ _('Log in') }}</button>
+  </form>
+  <p>{{ _('No account?') }} <a href="{{ url_for('auth.register') }}">{{ _('Register here') }}</a>.</p>
+</div>
+{% endblock %}

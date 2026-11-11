@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}{{ _('Edit trip') if trip else _('Publish a trip') }} - Campus Ride Match{% endblock %}
+{% block content %}
+<div class="form-card">
+  <h1>{{ _('Edit trip') if trip else _('Publish a trip') }}</h1>
+  {% if active_count %}<p class="notice">{{ _('A participant has joined. Matching fields and capacity are locked; only specific meeting locations can change.') }}</p>{% endif %}
+  <form method="post" class="form-grid">
+    <label>{{ _('Trip date') }}<input type="date" name="trip_date" min="{{ today }}" required
+      value="{{ request.form.get('trip_date', trip['trip_date'] if trip else '') }}" {% if active_count %}disabled{% endif %}></label>
+    <label>{{ _('Publisher party size') }}<input type="number" name="publisher_party_size" min="1" max="20" required
+      value="{{ request.form.get('publisher_party_size', trip['publisher_party_size'] if trip else 1) }}" {% if active_count %}disabled{% endif %}></label>
+    <label>{{ _('Available seats') }}<input type="number" name="seat_capacity" min="1" max="20" required
+      value="{{ request.form.get('seat_capacity', trip['seat_capacity'] if trip else 1) }}" {% if active_count %}disabled{% endif %}></label>
+    <label>{{ _('Origin fixed area') }}<select name="origin_area_id" required {% if active_count %}disabled{% endif %}>
+      <option value="">{{ _('Choose an area') }}</option>
+      {% set selected_origin = request.form.get('origin_area_id', trip['origin_area_id']|string if trip else '') %}
+      {% for area in areas %}<option value="{{ area['id'] }}" {% if selected_origin|string == area['id']|string %}selected{% endif %}>{{ area['name'] }}</option>{% endfor %}
+    </select></label>
+    <label>{{ _('Origin specific location') }}<input name="origin_detail" maxlength="200" value="{{ request.form.get('origin_detail', trip['origin_detail'] or '' if trip else '') }}"></label>
+    <label>{{ _('Destination fixed area') }}<select name="destination_area_id" required {% if active_count %}disabled{% endif %}>
+      <option value="">{{ _('Choose an area') }}</option>
+      {% set selected_destination = request.form.get('destination_area_id', trip['destination_area_id']|string if trip else '') %}
+      {% for area in areas %}<option value="{{ area['id'] }}" {% if selected_destination|string == area['id']|string %}selected{% endif %}>{{ area['name'] }}</option>{% endfor %}
+    </select></label>
+    <label>{{ _('Destination specific location') }}<input name="destination_detail" maxlength="200" value="{{ request.form.get('destination_detail', trip['destination_detail'] or '' if trip else '') }}"></label>
+    <label>{{ _('Acceptable start time') }}<input type="time" name="start_time" required value="{{ request.form.get('start_time', trip['start_time'] if trip else '') }}" {% if active_count %}disabled{% endif %}></label>
+    <label>{{ _('Acceptable end time') }}<input type="time" name="end_time" required value="{{ request.form.get('end_time', trip['end_time'] if trip else '') }}" {% if active_count %}disabled{% endif %}></label>
+    <div class="full"><button type="submit">{{ _('Save changes') if trip else _('Publish a trip') }}</button></div>
+  </form>
+</div>
+{% endblock %}

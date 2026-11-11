@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}{{ _('My profile') }} - Campus Ride Match{% endblock %}
+{% block content %}
+<div class="form-card narrow">
+  <h1>{{ _('My profile') }}</h1>
+  <p><strong>{{ _('Username') }}:</strong> {{ g.user['username'] }}</p>
+  <p><strong>{{ _('Rating') }}:</strong> {{ rating['average_rating'] or _('No ratings yet') }} ({{ rating['review_count'] }} {{ _('reviews') }})</p>
+  <form method="post">
+    <label>{{ _('Display name') }}<input name="display_name" maxlength="60" required value="{{ g.user['display_name'] }}"></label>
+    <label>{{ _('Email') }}<input type="email" name="email" required value="{{ g.user['email'] }}"><small>{{ _('Email use explanation') }}</small></label>
+    <label>{{ _('Phone (optional)') }}<input name="phone" value="{{ g.user['phone'] or '' }}"></label>
+    <button type="submit">{{ _('Save profile') }}</button>
+  </form>
+</div>
+{% endblock %}

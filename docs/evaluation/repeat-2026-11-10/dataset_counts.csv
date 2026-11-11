@@ -1,0 +1,4 @@
+size,users,location_areas,trips,match_requests,trip_participants,reviews,notifications,participant_users
+100,100,20,100,281,135,62,141,76
+1000,100,20,1000,2688,1451,682,1479,100
+5000,100,20,5000,13389,7248,3060,7591,100

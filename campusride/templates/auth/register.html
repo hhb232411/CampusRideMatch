@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}{{ _('Register') }} - Campus Ride Match{% endblock %}
+{% block content %}
+<div class="form-card narrow">
+  <h1>{{ _('Create account') }}</h1>
+  <form method="post">
+    <label>{{ _('Username') }}<input name="username" minlength="3" maxlength="30" required value="{{ request.form.get('username', '') }}"></label>
+    <label>{{ _('Display name') }}<input name="display_name" maxlength="60" required value="{{ request.form.get('display_name', '') }}"></label>
+    <label>{{ _('Email') }}<input type="email" name="email" required value="{{ request.form.get('email', '') }}"><small>{{ _('Email use explanation') }}</small></label>
+    <label>{{ _('Phone (optional)') }}<input name="phone" value="{{ request.form.get('phone', '') }}"></label>
+    <label>{{ _('Password') }}<input type="password" name="password" minlength="8" required></label>
+    <button type="submit">{{ _('Register') }}</button>
+  </form>
+</div>
+{% endblock %}

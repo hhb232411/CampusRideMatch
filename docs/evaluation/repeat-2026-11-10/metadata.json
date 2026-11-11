@@ -1,0 +1,44 @@
+{
+  "started_utc": "2026-11-10T01:56:27.158679+00:00",
+  "as_of_local": "2026-11-10",
+  "seed": 5003,
+  "sizes": [
+    100,
+    1000,
+    5000
+  ],
+  "users": 100,
+  "rounds": 8,
+  "repetitions_per_case_round": 30,
+  "warmups_per_case_round": 3,
+  "automatic_index": true,
+  "removed_non_unique_indexes": [
+    "idx_trips_search",
+    "idx_trips_publisher",
+    "idx_requests_trip_status",
+    "idx_requests_user_status",
+    "idx_participants_trip_status",
+    "idx_participants_user_status",
+    "idx_notifications_user_unread",
+    "idx_reviews_reviewee"
+  ],
+  "python": "3.12.2",
+  "sqlite": "3.43.1",
+  "flask": "3.1.3",
+  "os": "Windows-11-10.0.26200-SP0",
+  "processor": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+  "logical_cpus": 16,
+  "timer": "perf_counter_ns; execute plus fetchall with sqlite3.Row; milliseconds",
+  "summary": "Median across rounds of the arithmetic mean of per-case medians; IQR across rounds",
+  "statistics_policy": "No ANALYZE, matching the current application setup; same automatic_index in both conditions",
+  "order_policy": "Shuffle cases per round; alternate condition order by round for each case, exactly balanced",
+  "source_sha256": {
+    "schema.sql": "ef15e348583cff82ae91cd694cacdcf61747a2006c5219925f90a16b213bd4f3",
+    "campusride/trips.py": "9e2635ca26c82cd97d82c8124b9b0e25d0c036ac12a1d60f8d48a4be6ca2f78f",
+    "scripts/generate_test_data.py": "ac604180af86df613b1b02b2b21cb87a22a3be10177c97ddd2b8fc98c286670a",
+    "scripts/evaluate_queries.py": "bb304fcbe938431f5eeb3c66289c53fae7cceca1b832d8d03d4d4bfa611cfa40",
+    "scripts/evaluation_workload.py": "448135d1dc3fbcbf4ee41b97fae71661c3deb8da6bff235704d521d7605a6659"
+  },
+  "finished_utc": "2026-11-10T01:56:45.212043+00:00",
+  "raw_measurement_count": 15840
+}

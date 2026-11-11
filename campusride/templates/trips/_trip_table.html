@@ -1,0 +1,17 @@
+{% if items %}
+<div class="table-wrap"><table>
+  <thead><tr><th>{{ _('Date') }}</th><th>{{ _('Route') }}</th><th>{{ _('Time range') }}</th><th>{{ _('Seats') }}</th><th>{{ _('Status') }}</th><th></th></tr></thead>
+  <tbody>
+  {% for item in items %}
+    <tr>
+      <td>{{ item['trip_date'] }}</td>
+      <td>{{ item['origin_area'] }} → {{ item['destination_area'] }}</td>
+      <td>{{ item['start_time'] }}–{{ item['end_time'] }}</td>
+      <td>{{ item['available_seats'] }}/{{ item['seat_capacity'] }}</td>
+      <td><span class="badge {{ item['status']|lower }}">{{ _(item['status']) }}</span></td>
+      <td><a href="{{ url_for('trips.detail', trip_id=item['id']) }}">{{ _('Details') }}</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+{% else %}<p class="muted">{{ _('No trips to show.') }}</p>{% endif %}

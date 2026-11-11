@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}{{ _('Requests') }} - Campus Ride Match{% endblock %}
+{% block content %}
+<div class="page-heading"><h1>{{ _('Requests for my trips') }}</h1><a class="button secondary" href="{{ url_for('trips.my_trips') }}">{{ _('Manage participants') }}</a></div>
+{% if received %}<div class="table-wrap"><table><thead><tr><th>{{ _('Requester') }}</th><th>{{ _('Trip') }}</th><th>{{ _('Date and time') }}</th><th>{{ _('Status') }}</th><th>{{ _('Action') }}</th></tr></thead><tbody>
+{% for item in received %}<tr><td>{{ item['requester_name'] }}</td><td><a href="{{ url_for('trips.detail', trip_id=item['trip_id']) }}">{{ item['origin_area'] }} → {{ item['destination_area'] }}</a></td><td>{{ item['trip_date'] }} {{ item['start_time'] }}–{{ item['end_time'] }}</td><td><span class="badge">{{ _(item['status']) }}</span></td><td>{% if item['status'] == 'Pending' %}<div class="actions"><form method="post" action="{{ url_for('trips.accept_request', request_id=item['id']) }}"><button class="small">{{ _('Accept') }}</button></form><form method="post" action="{{ url_for('trips.reject_request', request_id=item['id']) }}"><button class="small secondary">{{ _('Reject') }}</button></form></div>{% else %}—{% endif %}</td></tr>{% endfor %}
+</tbody></table></div>{% else %}<p class="muted">{{ _('No requests received.') }}</p>{% endif %}
+{% endblock %}
