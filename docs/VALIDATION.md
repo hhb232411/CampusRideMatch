@@ -20,4 +20,4 @@ No full performance experiment was rerun. The 88 timings emitted by one existing
 
 The delivered application, schema, seed, tests, sample SQL and evaluation code are byte-identical to the working project at the start of Stage 5. Packaging changes consist of a concise README, stronger ignore rules and delivery/validation notes. The supporting database-design document clarifies SQLite type affinity, expiry and audit boundaries.
 
-Verified limitations: only the stated Windows/Python/Edge environment was exercised here. Other Python versions, operating systems, browser engines, deployment capacity and actual video encoding/upload were not verified. GitHub publication, team details and final video remain pending; see [DELIVERABLES.md](DELIVERABLES.md).
+Verified limitations: only the stated Windows/Python/Edge environment was exercised here. Other Python versions, operating systems, browser engines, deployment capacity and actual video encoding/upload were not verified. GitHub publication was completed after this validation. Team details and final video remain pending; see [DELIVERABLES.md](DELIVERABLES.md).

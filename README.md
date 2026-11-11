@@ -33,7 +33,14 @@ app.py / run.py        Application entry points
 
 ## Installation and Setup
 
-Extract the source ZIP or clone the confirmed repository, then enter the directory containing `app.py`. Create a clean virtual environment:
+Clone the public repository and enter the project directory. Alternatively, extract the supplied source ZIP and enter the directory containing `app.py`.
+
+```text
+git clone https://github.com/hhb232411/CampusRideMatch.git
+cd CampusRideMatch
+```
+
+Create a clean virtual environment:
 
 ```text
 python -m venv .venv
@@ -75,7 +82,7 @@ Seed-only accounts: `alice`, `bob`, `carol`; all use **`password123`**. Names, e
 ## Running the Application
 
 ```text
-python -m flask --app app run --host 127.0.0.1 --port 5000
+python -m flask --app app --no-debug run --host 127.0.0.1 --port 5000
 ```
 
 Open **http://127.0.0.1:5000/**. Keep this terminal running; Ctrl+C stops the server. This command keeps debug mode off. Log in, open Search, Publish, My trips, Requests, Notifications and Insights. The initial database includes completed and full trips as well as open ones; use an open future trip for requests.
@@ -127,7 +134,7 @@ Chart generation additionally requires `python -m pip install -r requirements-ev
 ## Links to Report and Video
 
 - **Report:** `CampusRideMatch-report.pdf` is supplied separately in the final delivery with editable LaTeX. Team/contribution/link placeholders remain; it is not yet a submission-ready PDF.
-- **GitHub:** **TO BE CONFIRMED — repository has not been published.**
+- The source repository is publicly available on [GitHub](https://github.com/hhb232411/CampusRideMatch).
 - **Video:** **TO BE COMPLETED — recording, upload and accessible URL pending.**
 - [Deliverable status and recording handoff](docs/DELIVERABLES.md)
 

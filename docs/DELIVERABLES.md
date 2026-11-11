@@ -1,13 +1,13 @@
 # Deliverable status
 
-This clean source package is intended for a new GitHub repository. No remote repository has been created or pushed by this preparation step.
+The source code is published in the public [CampusRideMatch GitHub repository](https://github.com/hhb232411/CampusRideMatch).
 
 | Item | Status | Required action |
 |---|---|---|
-| Source and README | Prepared; clean-copy checks recorded in VALIDATION.md | Publish the extracted project using the final delivery's GitHub guide; confirm access |
+| Source and README | Published; clean-copy checks recorded in VALIDATION.md | Keep the submitted report's repository link consistent with this repository |
 | Report | 18-page English PDF and editable LaTeX supplied separately | Fill team/course/contribution/acknowledgement fields and confirmed links; recompile |
 | Video | Seven-minute script and executable recording handoff supplied separately | Assign presenters, record, edit, confirm 5–8 minutes, upload and check access |
-| GitHub URL | **TO BE CONFIRMED** | Add the actual repository URL here, in README and in the report |
+| GitHub URL | [hhb232411/CampusRideMatch](https://github.com/hhb232411/CampusRideMatch) | Add this confirmed URL to the final report |
 | Video URL | **TO BE COMPLETED** | Add a playable link here, in README and in the report |
 
 The course submission is a PDF named `CampusRideMatch-report.pdf`, with working source-repository and video links. The ZIP is a source delivery/archive, not a replacement for the required online repository.
